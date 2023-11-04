@@ -1,20 +1,42 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    // Or if using `src` directory:
+    "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#E7BB4C",
+          "base-100": "#FFFFFF",
+        },
+      },
+    ],
+  },
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      borderRadius: {
+        "3xl": "30px",
+      },
+      colors: {
+        primary: {
+          100: "#E7BB4C",
+        },
+        secondary: {},
+
+        error: {},
+        light: {},
+        dark: {
+          100: "#181818",
+          200: "#1D1D1D",
+        },
       },
     },
+    fontFamily: {
+      Lato: ["Lato", "sans-serif"],
+      Inter: ["inter", "sans-serif"],
+    },
   },
-  plugins: [],
-}
-export default config
+  plugins: [require("tailwindcss-rtl")],
+};

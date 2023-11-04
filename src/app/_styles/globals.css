@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+@layer {
+  #__next {
+    @apply contents;
+  }
+  html {
+    @apply h-full scroll-smooth antialiased;
+  }
+  body {
+    @apply flex h-full flex-col;
+  }
+  main {
+    @apply flex-1;
+  }
+  .section {
+    @apply py-24;
+  }
+  .center {
+    @apply mx-auto max-w-5xl sm:px-6 lg:px-8;
+  }
+  .ql-container {
+    @apply min-h-[200px];
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    @apply h-1.5 w-2;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply !rounded-full bg-[#FFFCF3];
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-100 rounded-full;
+  }
+  li {
+    list-style: disc;
+    padding-bottom: 10px;
+  }
+  .contact-shadow {
+    box-shadow: 0px 0px 53.5284px 26.7642px rgba(0, 0, 0, 0.03);
+  }
+  .swiper-wrapper {
+    @apply items-center;
+  }
+  .swiper {
+    @apply !px-[30px];
+  }
+}
