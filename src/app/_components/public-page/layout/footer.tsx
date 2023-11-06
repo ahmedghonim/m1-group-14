@@ -56,6 +56,11 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
             {t("fqa")}
           </Link>
         </li>
+        <li>
+          <Link href="/login" className="font-medium font-Lato">
+            {t("login_for_employee")}
+          </Link>
+        </li>
       </ul>
     </div>
   );

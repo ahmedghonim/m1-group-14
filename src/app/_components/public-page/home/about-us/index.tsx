@@ -29,7 +29,9 @@ export default async function AboutUS({
       <div className="flex justify-between items-center flex-col lg:flex-row  gap-5 md:gap-0">
         <div className="lg:w-[60%] order-2 lg:order-1">
           <div className="mb-3 flex flex-col gap-2">
-            <Paragraph description={data?.description[lang]} />
+            {data?.description[lang] && (
+              <Paragraph description={data?.description[lang]} />
+            )}
           </div>
           <Link
             href="/about-us"

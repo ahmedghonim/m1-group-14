@@ -113,5 +113,14 @@
   "service": "Service",
   "customer": "Customer",
   "takeService": "Take Service",
-  "hero": "Hero"
+  "hero": "Hero",
+  "for_contacting_us": "For Contacting Us",
+  "delete": "Delete",
+  "create_new": "Create New",
+  "ar_question": "Arabic Question",
+  "en_question": "English Question",
+  "ar_answer": "Arabic Answer",
+  "en_answer": "English Answer",
+  "GET_IN_TOUCH": "GET IN TOUCH",
+  "login_for_employee": "Login For Employee"
 }

@@ -10,16 +10,16 @@ export default function Statistics({ data }: { data: NumbersInfo }) {
 
   const numbers = [
     {
-      count: data.service + "+",
+      count: data?.service + "+",
       name: t("services"),
     },
     {
-      count: data.customer + "%",
+      count: data?.customer + "%",
       name: t("usefully"),
     },
 
     {
-      count: data.takeService + "K+",
+      count: data?.takeService + "K+",
       name: t("client"),
     },
   ];
