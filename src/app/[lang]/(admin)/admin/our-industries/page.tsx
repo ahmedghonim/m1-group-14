@@ -3,15 +3,7 @@ import * as yup from "yup";
 import { Button, Input } from "@/app/_ui";
 import { translation } from "@/i18n";
 
-export const validationSchema = yup.object({
-  id: yup.string().optional(),
-  service: yup.number().required(),
-  customer: yup.number().required(),
-  takeService: yup.number().required(),
-});
-
-export type NumbersInfo = yup.InferType<typeof validationSchema>;
-
+export type NumbersInfo = any;
 async function Page({
   params: { lang },
 }: {

@@ -7,7 +7,7 @@ import Faq from "@svg/fqa.svg";
 import Messages from "@svg/messages.svg";
 import VerticalBar from "../../shared/vertical-bar";
 
-function SideBar({ lang }: { lang: any }) {
+function SideBar({ params }: { params: any }) {
   const sideBar = [
     { name: "about-us", link: "/admin", icon: AboutUs },
     {
@@ -17,7 +17,7 @@ function SideBar({ lang }: { lang: any }) {
     },
     { name: "our-services", link: "/admin/our-services", icon: OurServes },
     { name: "our-client", link: "/admin/our-client", icon: OurClient },
-    { name: "fqa", link: "/admin/fqa", icon: Faq },
+    { name: "fqa", link: "/admin/our-fqa", icon: Faq },
     { name: "messages", link: "/admin/messages", icon: Messages },
   ];
 

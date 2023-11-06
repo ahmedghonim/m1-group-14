@@ -6,8 +6,8 @@ import { revalidatePath } from "next/cache";
 const upsertAction = async (formData: FormData) => {
   const object = Object.fromEntries(formData);
   const { image, ...value } = object;
-  const data = await getHeroData();
-
+  const data = await getAboutData();
+  console.log("value >>>> ", value);
   try {
     let imageUrl = "";
 
@@ -21,9 +21,9 @@ const upsertAction = async (formData: FormData) => {
         ar: value["title.ar"],
         en: value["title.en"],
       } as any,
-      subtitle: {
-        ar: value["subtitle.ar"],
-        en: value["subtitle.en"],
+      description: {
+        ar: value["description.ar"],
+        en: value["description.en"],
       } as any,
       image: imageUrl,
     } as any;
@@ -31,31 +31,31 @@ const upsertAction = async (formData: FormData) => {
       delete values.image;
     }
     if (data?.id === undefined) {
-      await prisma.hero.create({
+      await prisma.about.create({
         data: {
           id: 1,
           ...values,
         },
       });
     } else {
-      await prisma.hero.update({
+      await prisma.about.update({
         where: {
           id: 1,
         },
         data: values,
       });
     }
-    revalidatePath("/[lang]/admin", "page");
+    revalidatePath("/[lang]/admin/about-us", "page");
   } catch (error) {
     console.log("error >>>> ", error);
   }
 };
 
-const getHeroData = async () =>
-  prisma.hero.findUnique({
+const getAboutData = async () =>
+  prisma.about.findUnique({
     where: {
       id: 1,
     },
   });
 
-export { upsertAction, getHeroData };
+export { upsertAction, getAboutData };

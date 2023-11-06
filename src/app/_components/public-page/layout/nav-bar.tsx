@@ -22,12 +22,16 @@ function NavBar() {
   const lang = asPath.split("/")[1];
   const [openMenu, setOpenMenu] = useState(false);
   const navBar = [
-    { name: "home", link: "/", icon: LogoIcon },
-    { name: "our-services", link: "/our-services", icon: OurServesIcon },
-    { name: "about-us", link: "/about-us", icon: AboutIcon },
-    { name: "contact-us", link: "/contact-us", icon: AboutIcon },
-    { name: "faq", link: "/fqa", icon: FQAIcon },
-    { name: "terms-conditions", link: "/terms-conditions", icon: FQAIcon },
+    { name: "home", link: `${lang}/`, icon: LogoIcon },
+    { name: "our-services", link: `${lang}/our-services`, icon: OurServesIcon },
+    { name: "about-us", link: `${lang}/about-us`, icon: AboutIcon },
+    { name: "contact-us", link: `${lang}/contact-us`, icon: AboutIcon },
+    { name: "faq", link: `${lang}/fqa`, icon: FQAIcon },
+    {
+      name: "terms-conditions",
+      link: `${lang}/terms-conditions`,
+      icon: FQAIcon,
+    },
   ];
 
   const isActiveTab = (_link: string) => asPath === _link;

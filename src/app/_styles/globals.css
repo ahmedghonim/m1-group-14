@@ -53,3 +53,6 @@
     @apply !px-[30px];
   }
 }
+.ql-editor {
+  @apply text-base;
+}

@@ -1,27 +1,15 @@
-import { Text } from "@/app/_ui";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
 
 export interface ServesViewProps {
   src: string;
-  title_ar: string;
-  title_en: string;
-  desc_ar: string;
-  desc_en: string;
+  title: string;
+  desc: string;
   revers?: boolean;
-  lang?: string;
 }
 
-async function ServesView({
-  revers,
-  src,
-  desc_ar,
-  desc_en,
-  title_ar,
-  title_en,
-  lang,
-}: ServesViewProps) {
+async function ServesView({ revers, src, title, desc }: ServesViewProps) {
   return (
     <div
       className={clsx("flex gap-9 md:flex-row flex-col", {
@@ -42,13 +30,13 @@ async function ServesView({
         <div
           className="!text-start font-bold md:text-3xl text-xl"
           dangerouslySetInnerHTML={{
-            __html: lang === "ar" ? title_ar : title_en,
+            __html: title,
           }}
         />
         <div
           className="!text-start"
           dangerouslySetInnerHTML={{
-            __html: lang === "ar" ? desc_ar : desc_en,
+            __html: desc,
           }}
         />
       </div>

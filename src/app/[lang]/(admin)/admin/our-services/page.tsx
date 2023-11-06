@@ -1,23 +1,12 @@
-import { getHeroData, upsertAction } from "./api-calls";
 import * as yup from "yup";
-import { Button, Input } from "@/app/_ui";
+import { deleteAction, getServiceData } from "./api-calls";
+import { Button } from "@/app/_ui";
 import { translation } from "@/i18n";
-import UploadImage from "@/app/_ui/upload-image";
+import Link from "next/link";
+import { Service } from "@prisma/client";
+import ServesView from "@/app/_components/public-page/our-serves";
 
-export const validationSchema = yup.object({
-  id: yup.string().optional(),
-  image: yup.string().optional(),
-  title: yup.object({
-    ar: yup.string().min(1, { message: "" }).required(),
-    en: yup.string().min(1, { message: "" }).required(),
-  }),
-  subtitle: yup.object({
-    ar: yup.string().min(1, { message: "" }).required(),
-    en: yup.string().min(1, { message: "" }).required(),
-  }),
-});
-
-export type HeroTypes = yup.InferType<typeof validationSchema>;
+export type HeroTypes = any;
 
 async function Page({
   params: { lang },
@@ -26,45 +15,34 @@ async function Page({
     lang: string;
   };
 }) {
-  const data = (await getHeroData()) as HeroTypes;
   const { t } = await translation(lang, "common");
+  const data = await getServiceData();
 
   return (
     <div>
-      <form action={upsertAction} className="grid grid-cols-12">
-        <div className="col-span-12 h-[450px]">
-          <input type="file" name="image" defaultValue={data?.image} />
-          <UploadImage name="image" value={data?.image} />
-        </div>
-
-        <div className="col-span-12 flex flex-1 flex-col gap-6 mt-10">
-          <Input
-            name="title.ar"
-            label={t("ar_title")}
-            defaultValue={data?.title?.ar}
-          />
-          <Input
-            name="title.en"
-            label={t("en_title")}
-            defaultValue={data?.title?.en}
-          />
-
-          <Input
-            name="subtitle.ar"
-            label={t("ar_subtitle")}
-            defaultValue={data?.subtitle?.ar}
-          />
-          <Input
-            name="subtitle.en"
-            label={t("en_subtitle")}
-            defaultValue={data?.subtitle?.en}
-          />
-        </div>
-
-        <Button style="primary" type="submit" className="mt-10">
-          {t("submit")}
-        </Button>
-      </form>
+      <Button style="primary">
+        <Link href={`/${lang}/admin/our-services/create`}>
+          {t("create_new")}
+        </Link>
+      </Button>
+      <div>
+        {data.map(
+          ({ image, title, description, favoriteNum, id }: any, index) => (
+            <div
+              key={index}
+              className="shadow-md m-5 rounded-md hover:shadow-xl"
+            >
+              <Link href={`/${lang}/admin/our-services/${id}`}>
+                <ServesView
+                  src={image}
+                  desc={description[lang]}
+                  title={title[lang]}
+                />
+              </Link>
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 }

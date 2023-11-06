@@ -13,22 +13,12 @@ import "swiper/css/autoplay";
 import Image from "next/image";
 import { Text } from "@/app/_ui";
 
-export default function Clients() {
+export default function Clients({ data }: { data: any }) {
   const { t } = useTranslation("common");
 
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
-  const clientsImages = [
-    "/clients/2.png",
-    "/clients/3.jpg",
-    "/clients/4.jpeg",
-    "/clients/5.png",
-    "/clients/6.jpg",
-    "/clients/7.jpg",
-    "/clients/8.jpeg",
-    "/clients/9.jpeg",
-    "/clients/10.jpeg",
-  ];
+
   return (
     <div className="lg:px-[120px] px-6 md:pt-[100px] pt-8 md:pb-[126px] pb-[60px]">
       <Text
@@ -61,9 +51,9 @@ export default function Clients() {
             1200: { slidesPerView: 5 },
           }}
         >
-          {clientsImages.map((src, index) => (
+          {data.map(({ image }: any, index: any) => (
             <SwiperSlide key={index}>
-              <Image src={src} width={200} height={200} alt="client" />
+              <Image src={image} width={200} height={200} alt="client" />
             </SwiperSlide>
           ))}
         </Swiper>

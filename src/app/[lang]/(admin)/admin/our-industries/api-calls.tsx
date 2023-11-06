@@ -11,7 +11,7 @@ const upsertAction = async (formData: FormData) => {
     if (data?.id === undefined) {
       await prisma.numbersInfo.create({
         data: {
-          id: "1",
+          id: 1,
           service: Number(object.service),
           customer: Number(object.customer),
           takeService: Number(object.takeService),
@@ -20,7 +20,7 @@ const upsertAction = async (formData: FormData) => {
     } else {
       await prisma.numbersInfo.update({
         where: {
-          id: "1",
+          id: 1,
         },
         data: {
           service: Number(object.service),
@@ -38,7 +38,7 @@ const upsertAction = async (formData: FormData) => {
 const getInoNumbersData = async () =>
   prisma.numbersInfo.findUnique({
     where: {
-      id: "1",
+      id: 1,
     },
   });
 

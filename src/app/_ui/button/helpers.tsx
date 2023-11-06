@@ -4,6 +4,8 @@ export const variants = {
       "!bg-primary-100 !text-white !h-fit disabled:!opacity-25 hover:!bg-opacity-75",
     secondary:
       "!bg-dark-200 !text-white  disabled:!opacity-25 hover:!bg-opacity-75 hover:!bg-primary-100",
+    danger:
+      "!bg-red-500 !text-white  disabled:!opacity-25 hover:!bg-opacity-75 hover:!bg-red-100",
     transparent:
       "!text-primary-100 font-bold flex items-center justify-between !px-0",
     outline:
@@ -41,6 +43,7 @@ export const spinierVariants = {
   secondary: "fill-white",
   transparent: "fill-primary-100",
   outline: "fill-primary-100",
+  danger: "fill-white",
 };
 
 export function IconRender(icon: IconProps) {

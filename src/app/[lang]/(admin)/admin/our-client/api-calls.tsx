@@ -17,39 +17,30 @@ const upsertAction = async (formData: FormData) => {
     }
 
     const values = {
-      title: {
-        ar: value["title.ar"],
-        en: value["title.en"],
-      } as any,
-      description: {
-        ar: value["description.ar"],
-        en: value["description.en"],
-      } as any,
       image: imageUrl,
     } as any;
     if (imageUrl === "") {
       delete values.image;
     }
-    console.log('typeof id === "number" >>>> ', +id);
+
     if (+id !== 0) {
-      await prisma.service.update({
+      await prisma.client.update({
         where: {
           id: +id,
         },
         data: values,
       });
     } else {
-      console.log("value ahmed>>>> ", value);
-      await prisma.service.create({
+      await prisma.client.create({
         data: {
           ...values,
         },
       });
     }
-    revalidatePath("/[lang]/admin/service-us", "page");
-    redirect("/ar/admin/our-services");
+    revalidatePath("/[lang]/admin/client-us", "page");
+    redirect("/ar/admin/our-client");
   } catch (error) {
-    redirect("/ar/admin/our-services");
+    redirect("/ar/admin/our-client");
   }
 };
 
@@ -57,25 +48,25 @@ async function deleteAction(formData: FormData) {
   const object = Object.fromEntries(formData);
   const { id } = object;
   try {
-    const data = await prisma.service.delete({
+    const data = await prisma.client.delete({
       where: {
         id: +id,
       },
     });
-    revalidatePath("/[lang]/admin/our-services", "page");
-    redirect("/admin/our-services");
+    revalidatePath("/[lang]/admin/our-client", "page");
+    redirect("/admin/our-client");
   } catch (error) {
-    redirect("/admin/our-services");
+    redirect("/admin/our-client");
   }
 }
 
-const getServiceData = async () => prisma.service.findMany();
+const getClientData = async () => prisma.client.findMany();
 
-const getServiceById = async (id: number) =>
-  prisma.service.findUnique({
+const getClientById = async (id: number) =>
+  prisma.client.findUnique({
     where: {
       id: id,
     },
   });
 
-export { upsertAction, deleteAction, getServiceData, getServiceById };
+export { upsertAction, deleteAction, getClientData, getClientById };

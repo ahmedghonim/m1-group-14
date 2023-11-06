@@ -38,5 +38,5 @@ module.exports = {
       Inter: ["inter", "sans-serif"],
     },
   },
-  plugins: [require("tailwindcss-rtl")],
+  plugins: [require("tailwindcss-rtl"), require("daisyui")],
 };

@@ -1,9 +1,10 @@
-import { getHeroData, upsertAction } from "./api-calls";
+import { getAboutData, upsertAction } from "./api-calls";
 import { Button, Input } from "@/app/_ui";
 import { translation } from "@/i18n";
 import UploadImage from "@/app/_ui/upload-image";
+import TextEditor from "@/app/_ui/text-editor";
 
-export type HeroTypes = any;
+export type AboutTypes = any;
 
 async function Page({
   params: { lang },
@@ -12,7 +13,7 @@ async function Page({
     lang: string;
   };
 }) {
-  const data = (await getHeroData()) as HeroTypes;
+  const data = (await getAboutData()) as AboutTypes;
   const { t } = await translation(lang, "common");
 
   return (
@@ -23,7 +24,7 @@ async function Page({
           <UploadImage name="image" value={data?.image} />
         </div>
 
-        <div className="col-span-12 flex flex-1 flex-col gap-6 mt-10">
+        <div className="col-span-12 flex flex-1 flex-col gap-10 mt-10">
           <Input
             name="title.ar"
             label={t("ar_title")}
@@ -34,16 +35,15 @@ async function Page({
             label={t("en_title")}
             defaultValue={data?.title?.en}
           />
-
-          <Input
-            name="subtitle.ar"
-            label={t("ar_subtitle")}
-            defaultValue={data?.subtitle?.ar}
+          <TextEditor
+            label={t("ar_desc")}
+            value={data?.description?.ar}
+            name="description.ar"
           />
-          <Input
-            name="subtitle.en"
-            label={t("en_subtitle")}
-            defaultValue={data?.subtitle?.en}
+          <TextEditor
+            label={t("en_desc")}
+            value={data?.description?.en}
+            name="description.en"
           />
         </div>
 

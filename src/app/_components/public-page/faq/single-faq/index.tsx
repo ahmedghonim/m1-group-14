@@ -7,11 +7,11 @@ import { Text } from "@/app/_ui";
 
 interface SingleQuestionProps {
   number?: number;
-  ques: string;
+  question: string;
   answer: string;
 }
 
-const SingleQuestion = ({ ques, answer }: SingleQuestionProps) => {
+export const SingleQuestion = ({ question, answer }: SingleQuestionProps) => {
   const [clicked, setClicked] = useState<boolean>(false);
 
   return (
@@ -25,8 +25,11 @@ const SingleQuestion = ({ ques, answer }: SingleQuestionProps) => {
     >
       <input type="checkbox" />
       <div className="collapse-title relative flex items-center">
-        <Text font="mid" className="font-Inter  !text-[16px] md:!text-[24px]">
-          {ques}
+        <Text
+          font="mid"
+          className="font-Inter text-black !text-[16px] md:!text-[24px]"
+        >
+          {question}
         </Text>
         <span
           className={clsx("absolute right-2 top-1/2 duration-300 ", {
@@ -46,7 +49,13 @@ const SingleQuestion = ({ ques, answer }: SingleQuestionProps) => {
   );
 };
 
-function FAQS({ questions }: { questions: SingleQuestionProps[] }) {
+function FAQS({
+  questions,
+  lang,
+}: {
+  questions: SingleQuestionProps[];
+  lang: string;
+}) {
   const { t } = useTranslation("common");
   return (
     <div className="my-14 px-6 md:px-[120px]">
@@ -58,11 +67,12 @@ function FAQS({ questions }: { questions: SingleQuestionProps[] }) {
         {t("frequently_head")}
       </Text>
       <div className="flex flex-col mx-auto lg:px-4">
-        {questions.map((question, index) => {
+        {questions.map(({ question, answer }, index) => {
           return (
             <SingleQuestion
-              key={question.ques}
-              {...question}
+              key={index}
+              question={question[lang as any]}
+              answer={answer[lang as any]}
               number={index + 1}
             />
           );

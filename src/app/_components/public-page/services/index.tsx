@@ -5,17 +5,17 @@ import clsx from "clsx";
 import { translation } from "@/i18n";
 
 interface ServicesCardProps {
-  src: string;
-  title_ar: string;
-  title_en: string;
+  image: string;
+  title: string;
+  description: string;
   lang: string;
 }
 
-const ServicesCard = ({ src, title_ar, title_en, lang }: ServicesCardProps) => {
+const ServicesCard = ({ image, title, lang }: ServicesCardProps) => {
   return (
     <div className="relative h-[400px] overflow-hidden">
       <Image
-        src={src}
+        src={image}
         width={1000}
         height={1000}
         alt="image"
@@ -27,7 +27,7 @@ const ServicesCard = ({ src, title_ar, title_en, lang }: ServicesCardProps) => {
           as="h3"
           className="font-Lato !text-[28px] !text-white"
         >
-          {lang === "ar" ? title_ar : title_en}
+          {title[lang as any]}
         </Text>
       </div>
     </div>
@@ -50,7 +50,6 @@ export default async function Services({
   lang,
 }: ServicesProps) {
   const { t } = await translation(lang, "common");
-
   return (
     <div className="md:pt-[124px] pt-[40px]">
       <Text
@@ -65,7 +64,12 @@ export default async function Services({
       <div className={clsx("lg:px-[120px]", className)}>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-14">
           {data.slice(0, 6).map((service, index) => (
-            <ServicesCard key={index} {...(service as ServicesCardProps)} />
+            <ServicesCard
+              key={index}
+              //@ts-ignore
+              lang={lang}
+              {...(service as ServicesCardProps)}
+            />
           ))}
         </div>
         {children}

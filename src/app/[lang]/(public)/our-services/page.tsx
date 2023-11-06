@@ -7,7 +7,7 @@ import { LinkButton, Text } from "@/app/_ui";
 import ServesView, {
   ServesViewProps,
 } from "@/app/_components/public-page/our-serves";
-import servesData from "@/app/_components/public-page/our-serves/mockdata";
+import { getServiceData } from "../../(admin)/admin/our-services/api-calls";
 
 async function OurService({
   params: { lang },
@@ -15,7 +15,7 @@ async function OurService({
   params: { lang: "en" | "ar" };
 }) {
   const { t } = await translation(lang, "common");
-
+  const data = await getServiceData();
   return (
     <>
       <Head>
@@ -42,19 +42,13 @@ async function OurService({
       </IntroSection>
 
       <div className="md:px-[120px] md:space-y-[105px] px-6 space-y-6 text-center md:mt-[120px] my-[53px]">
-        {servesData.map(
-          (
-            { src, desc_ar, desc_en, title_ar, title_en }: ServesViewProps,
-            index
-          ) => (
+        {data.map(
+          ({ image, title, description, favoriteNum, id }: any, index) => (
             <ServesView
-              lang={lang}
-              key={index}
-              src={src}
-              desc_ar={desc_ar}
-              desc_en={desc_en}
-              title_ar={title_ar}
-              title_en={title_en}
+              key={id}
+              src={image}
+              desc={description[lang]}
+              title={title[lang]}
               revers={index % 2 !== 0}
             />
           )

@@ -10,7 +10,6 @@ interface Props {
 
 function UploadImage({ value }: Props) {
   const { data } = useFormStatus();
-  console.log("data >>>> ", data);
   return (
     <div className="pb-4 h-full w-full">
       <div className="h-full w-full border-2  border-dashed rounded-md border-primary-100 relative">

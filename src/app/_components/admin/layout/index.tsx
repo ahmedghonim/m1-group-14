@@ -26,8 +26,13 @@ export default async function DashboardLayout({
 
   const sideBar = [
     {
-      name: "about-us",
+      name: "hero",
       link: `/${lang}/admin`,
+      icon: <AboutUs className="fill-current" />,
+    },
+    {
+      name: "about-us",
+      link: `/${lang}/admin/about-us`,
       icon: <AboutUs className="fill-current" />,
     },
     {
@@ -47,7 +52,7 @@ export default async function DashboardLayout({
     },
     {
       name: "fqa",
-      link: `/${lang}/admin/fqa`,
+      link: `/${lang}/admin/our-fqa`,
       icon: <Faq className="fill-current" />,
     },
     {
