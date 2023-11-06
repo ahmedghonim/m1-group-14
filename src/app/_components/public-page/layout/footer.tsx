@@ -63,7 +63,7 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
           </Link>
         </li>
         <li>
-          <Link href={`/${lang}/faq`} className="font-medium font-Lato">
+          <Link href={`/${lang}/fqa`} className="font-medium font-Lato">
             {t("fqa")}
           </Link>
         </li>

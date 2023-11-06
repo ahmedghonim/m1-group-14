@@ -4,7 +4,6 @@ import TextLogo from "@svg/text-logo.svg";
 import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-// import { useTranslation } from "@/i18n/client";
 import ChangeLang from "./change-lang";
 import { useTranslation } from "@/i18n/client";
 

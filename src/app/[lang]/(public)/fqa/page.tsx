@@ -1,9 +1,9 @@
-import FAQIntro from "@/app/_components/public-page/faq/intro-sec";
-import FAQS from "@/app/_components/public-page/faq/single-faq";
 import { translation } from "@/i18n";
 import Head from "next/head";
 import React from "react";
 import { getFqaData } from "../../(admin)/admin/our-fqa/api-calls";
+import FAQIntro from "@/app/_components/public-page/faq/intro-sec";
+import FAQS from "@/app/_components/public-page/faq/single-faq";
 
 export default async function FAQ({
   params: { lang },
@@ -16,7 +16,7 @@ export default async function FAQ({
   return (
     <>
       <Head>
-        <title>{t("pages-title:faq")}</title>
+        <title>{t("pages-title:fqa")}</title>
       </Head>
       <FAQIntro lang={lang} />
       <FAQS questions={questions} lang={lang} />
