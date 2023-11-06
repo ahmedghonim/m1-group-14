@@ -26,38 +26,49 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
       </Text>
       <ul>
         <li>
-          <Link href="/" className="font-medium font-Lato">
+          <Link href={`/${lang}/`} className="font-medium font-Lato">
             {t("home")}
           </Link>
         </li>
 
         <li>
-          <Link href="/about-us" className="font-medium font-Lato">
+          <Link href={`/${lang}/about-us`} className="font-medium font-Lato">
             {t("about_us")}
           </Link>
         </li>
         <li>
-          <Link href="/contact-us" className="font-medium font-Lato">
+          <Link href={`/${lang}/contact-us`} className="font-medium font-Lato">
             {t("contact_us")}
           </Link>
         </li>
         <li>
-          <Link href="/our-services" className="font-medium font-Lato">
+          <Link
+            href={`/${lang}/our-services`}
+            className="font-medium font-Lato"
+          >
             {t("our_services")}
           </Link>
         </li>
         <li>
-          <Link href="/terms-conditions" className="font-medium font-Lato">
+          <Link
+            href={`/${lang}/terms-conditions`}
+            className="font-medium font-Lato"
+          >
             {t("terms-conditions")}
           </Link>
         </li>
         <li>
-          <Link href="/faq" className="font-medium font-Lato">
+          <Link href={`/${lang}/blog`} className="font-medium font-Lato">
+            {t("blog")}
+          </Link>
+        </li>
+        <li>
+          <Link href={`/${lang}/faq`} className="font-medium font-Lato">
             {t("fqa")}
           </Link>
         </li>
         <li>
-          <Link href="/login" className="font-medium font-Lato">
+          <Link href={`/${lang}/login`} className="font-medium font-Lato">
             {t("login_for_employee")}
           </Link>
         </li>
@@ -209,7 +220,7 @@ export default async function Footer({ lang }: { lang: "en" | "ar" }) {
       <div className="grid md:grid-cols-2 lg:grid-cols-8 gap-5 lg:gap-6">
         {/* -------- col 1 ------- */}
         <div className="md:col-span-1">
-          <Link href="/">
+          <Link href={`/${lang}/`}>
             <Logo />
           </Link>
         </div>

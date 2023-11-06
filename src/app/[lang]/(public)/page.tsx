@@ -40,7 +40,7 @@ export default async function Home({
         >
           <div className="flex justify-end">
             <Link
-              href={`${lang}/our-services`}
+              href={`/${lang}/our-services`}
               className="bg-dark-100 !text-[16px] py-3 px-5 text-white hover:opacity-60 duration-200 rounded font-Lato font-bold mt-6"
             >
               {t("read_more")}

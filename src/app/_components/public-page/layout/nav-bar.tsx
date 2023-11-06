@@ -22,14 +22,19 @@ function NavBar() {
   const lang = asPath.split("/")[1];
   const [openMenu, setOpenMenu] = useState(false);
   const navBar = [
-    { name: "home", link: `${lang}/`, icon: LogoIcon },
-    { name: "our-services", link: `${lang}/our-services`, icon: OurServesIcon },
-    { name: "about-us", link: `${lang}/about-us`, icon: AboutIcon },
-    { name: "contact-us", link: `${lang}/contact-us`, icon: AboutIcon },
-    { name: "faq", link: `${lang}/fqa`, icon: FQAIcon },
+    { name: "home", link: `/${lang}/`, icon: LogoIcon },
+    {
+      name: "our-services",
+      link: `/${lang}/our-services`,
+      icon: OurServesIcon,
+    },
+    { name: "about-us", link: `/${lang}/about-us`, icon: AboutIcon },
+    { name: "contact-us", link: `/${lang}/contact-us`, icon: AboutIcon },
+    { name: "blog", link: `/${lang}/blog`, icon: AboutIcon },
+    { name: "faq", link: `/${lang}/fqa`, icon: FQAIcon },
     {
       name: "terms-conditions",
-      link: `${lang}/terms-conditions`,
+      link: `/${lang}/terms-conditions`,
       icon: FQAIcon,
     },
   ];
