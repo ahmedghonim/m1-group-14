@@ -4,7 +4,8 @@ import AboutusCover from "@image/aboutus-cover.png";
 import { translation } from "@/i18n";
 import IntroSection from "@/app/_components/shared/intro-section";
 import { Text } from "@/app/_ui";
-import ContactUs from "@/app/_components/public-page/contact-us";
+import ContactUsForm from "@/app/_components/public-page/contact-us/contact-infos";
+// import ContactUs from "@/app/_components/public-page/contact-us";
 
 export default async function AboutUs({
   params: { lang },
@@ -59,7 +60,7 @@ export default async function AboutUs({
             </Text>
           </div>
         </div>
-        <ContactUs onSubmit={() => {}} lang={lang} />
+        <ContactUsForm lang={lang} />
       </div>
     </>
   );

@@ -1,8 +1,8 @@
+import { SingleQuestion } from "@/app/_components/public-page/faq/single-faq";
 import { getFqaData } from "./api-calls";
 import { Button } from "@/app/_ui";
 import { translation } from "@/i18n";
 import Link from "next/link";
-import { SingleQuestion } from "@/app/_components/public-page/fqa/single-fqa";
 
 export type HeroTypes = any;
 
