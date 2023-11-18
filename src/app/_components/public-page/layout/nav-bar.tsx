@@ -13,7 +13,6 @@ import ChangeLang from "../../shared/change-lang";
 import VerticalBar from "../../shared/vertical-bar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { translation } from "@/i18n";
 
 function NavBar() {
   const { t } = useTranslation("pages-title");
@@ -25,6 +24,7 @@ function NavBar() {
     { name: "home", link: "/", icon: LogoIcon },
     { name: "our-services", link: "/our-services", icon: OurServesIcon },
     { name: "about-us", link: "/about-us", icon: AboutIcon },
+    { name: "blog", link: "/blog", icon: FQAIcon },
     { name: "contact-us", link: "/contact-us", icon: AboutIcon },
     { name: "fqa", link: "/fqa", icon: FQAIcon },
     { name: "terms-conditions", link: "/terms-conditions", icon: FQAIcon },
@@ -39,7 +39,7 @@ function NavBar() {
       </div>
 
       {/* ------ Hidden In Mobile ----- */}
-      <div className="lg:flex gap-10 xl:gap-20 hidden">
+      <div className="lg:flex gap-8 xl:gap-14 hidden">
         {navBar.map(({ link, name }) => (
           <Link
             key={link}
@@ -69,9 +69,6 @@ function NavBar() {
         </Button>
         <ChangeLang />
       </div>
-      {/* ------ Hidden In Mobile ----- */}
-
-      {/* ------ Show In Mobile ----- */}
 
       <span className="lg:hidden" onClick={() => setOpenMenu(true)}>
         <MenuIcon />

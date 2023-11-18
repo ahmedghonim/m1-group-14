@@ -1,12 +1,12 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import ContactCover from "@image/contact-cover.png";
-// import { useRouter } from "next/router";
 import { translation } from "@/i18n";
-import { ContactFormProps } from "@/app/_components/public-page/contact-us/form";
 import IntroSection from "@/app/_components/shared/intro-section";
-import { Text } from "@/app/_ui";
-import ContactUsForm from "@/app/_components/public-page/contact-us";
+import { Button, Input, Text } from "@/app/_ui";
+import { createMessagesAction } from "../../(admin)/admin/messages/api-calls";
+import ContactInfo from "../../../_components/public-page/contact-us/contact-infos";
+import clsx from "clsx";
 
 export default async function ContactUsSSS({
   params: { lang },
@@ -15,18 +15,7 @@ export default async function ContactUsSSS({
 }) {
   const { t } = await translation(lang, "pages-title");
   const { t: commonT } = await translation(lang, "common");
-  // const { push } = useRouter();
-  // const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async (value: ContactFormProps) => {
-    // setIsLoading(true);
-    try {
-      // await axios.post("/api/contact-us", value);
-      // push("/thanx");
-    } catch (error) {
-      console.log("error >>>> ", error);
-    }
-  };
   return (
     <>
       <Head>
@@ -54,14 +43,82 @@ export default async function ContactUsSSS({
 
       <div className="md:px-[124px] px-6">
         <div className="relative md:-top-[125px] -top-[40px] bg-[#F2E4BF] md:py-[132px] py-4 px-6 rounded-[12px] z-[3]">
-          <ContactUsForm
-            lang={lang}
-            // isLoading={isLoading}
-            className="!mt-0 relative z-[5]"
-            onSubmit={onSubmit}
-          />
+          <section
+            className={clsx(
+              "bg-white  contact-shadow mt-[80px] pb-[100px] md:pb-0 flex flex-col sm:flex-row justify-between items-start w-full rounded-[10px]"
+            )}
+          >
+            <ContactInfo lang={lang} />
+            <div className="sm:w-[55%] w-full lg:pt-12 pt-4 sm:pt-0">
+              <form
+                action={createMessagesAction}
+                className="flex flex-col lg:gap-6 gap-6 sm:gap-3 lg:ltr:pr-[51px] sm:ltr:pr-[15px] lg:rtl:pl-[51px] sm:rtl:pl-[15px]"
+              >
+                <div className="grid md:grid-cols-2 md:gap-8 gap-4">
+                  <ContactInput
+                    name="first_name"
+                    placeHolder={commonT("first_name")}
+                    label={commonT("first_name")}
+                  />
+                  <ContactInput
+                    name="last_name"
+                    placeHolder={commonT("last_name")}
+                    label={commonT("last_name")}
+                  />
+                  <ContactInput
+                    name="email"
+                    placeHolder={commonT("email")}
+                    type="email"
+                    label={commonT("email")}
+                  />
+                  <ContactInput
+                    name="phone"
+                    placeHolder={commonT("phone_number")}
+                    label={commonT("phone_number")}
+                  />
+                  <ContactInput
+                    name="subject"
+                    placeHolder={commonT("subject")}
+                    label={commonT("subject")}
+                  />
+                </div>
+                <div className="bg-light-300 !rounded-[4px]">
+                  <ContactInput
+                    name="message"
+                    placeHolder={commonT("message")}
+                    label={commonT("message")}
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <Button
+                    type="submit"
+                    style="secondary"
+                    className="sm:!w-fit w-full ml-auto py-[15px] !px-[48px] !rounded !text-[16px] "
+                    font="mid"
+                  >
+                    {commonT("send_message")}
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </section>
         </div>
       </div>
     </>
   );
 }
+
+const ContactInput = ({ placeHolder, name, label, type = "" }: any) => {
+  return (
+    <div className="w-full bg-light-300 !rounded-[4px]">
+      <Input
+        name={name}
+        placeholder={placeHolder}
+        type={type}
+        label={label}
+        className="!text-primary-100"
+        labelStyle="!text-primary-100 font-normal"
+      />
+    </div>
+  );
+};

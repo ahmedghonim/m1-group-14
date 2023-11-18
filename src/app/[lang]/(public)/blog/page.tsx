@@ -4,12 +4,10 @@ import ServicesCover from "@image/services-cover.png";
 import { translation } from "@/i18n";
 import IntroSection from "@/app/_components/shared/intro-section";
 import { LinkButton, Text } from "@/app/_ui";
-import ServesView, {
-  ServesViewProps,
-} from "@/app/_components/public-page/our-serves";
+import ServesView from "@/app/_components/public-page/our-serves";
 import { getServiceData } from "../../(admin)/admin/our-services/api-calls";
 
-async function OurService({
+async function OurBlog({
   params: { lang },
 }: {
   params: { lang: "en" | "ar" };
@@ -66,4 +64,4 @@ async function OurService({
   );
 }
 
-export default OurService;
+export default OurBlog;

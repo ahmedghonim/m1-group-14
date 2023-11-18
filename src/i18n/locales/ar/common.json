@@ -121,5 +121,7 @@
   "GET_IN_TOUCH": "ابق على تواصل معنا",
   "login_for_employee": "تسجيل الدخول للموظفين",
   "blog": "المدونة",
-  "contact-us": "تواصل معنا"
+  "contact-us": "تواصل معنا",
+  "client_name": "اسم العميل",
+  "phone": "رقم الهاتف"
 }
