@@ -3,12 +3,13 @@ import { languages } from "@/i18n/settings";
 import DashboardLayout from "@/app/_components/admin/layout";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import prisma from "@/db_prisma/db";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export default function Layout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -16,8 +17,13 @@ export default function Layout({
   params: any;
 }) {
   const user = cookies().get("user");
+  const data = await prisma.user.findMany();
   if (user?.value !== "success") {
     redirect("/login");
+  }
+
+  if (data.length === 0) {
+    redirect("/register");
   }
   return (
     <DashboardLayout params={params}>

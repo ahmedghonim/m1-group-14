@@ -6,7 +6,10 @@ import { redirect } from "next/navigation";
 
 const onSubmit = async (formData: FormData) => {
   const object = Object.fromEntries(formData) as any;
-
+  const data = await prisma.user.findMany();
+  if (data.length === 0) {
+    redirect("/register");
+  }
   try {
     const data = await prisma.user.findFirst({
       where: {
@@ -17,6 +20,7 @@ const onSubmit = async (formData: FormData) => {
 
     if (data) {
       cookies().set("user", "success");
+      cookies().set("register", "error");
     } else {
       cookies().set("user", "error");
     }
