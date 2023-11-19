@@ -13,14 +13,14 @@ async function Page({
     lang: string;
   };
 }) {
-  const user = cookies().get("user");
-  const data = await prisma.user.findMany();
+  // const user = cookies().get("user");
+  // const data = await prisma.user.findMany();
 
-  if (user?.value === "success") {
-    redirect(`/${lang}/admin`);
-  } else if (data.length === 0) {
-    redirect(`/${lang}/register`);
-  }
+  // if (user?.value === "success") {
+  //   redirect(`/${lang}/admin`);
+  // } else if (data.length === 0) {
+  //   redirect(`/${lang}/register`);
+  // }
 
   return (
     <div className="flex h-screen bg-[#000]">

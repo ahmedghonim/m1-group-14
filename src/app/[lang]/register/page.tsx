@@ -16,11 +16,11 @@ function Page({
     lang: string;
   };
 }) {
-  const user = cookies().get("register");
+  // const user = cookies().get("register");
 
-  if (user?.value === "success") {
-    redirect(`/${lang}/login`);
-  }
+  // if (user?.value === "success") {
+  //   redirect(`/${lang}/login`);
+  // }
   return (
     <div className="flex h-screen bg-[#000]">
       <div className="m-auto w-2/6 ">
