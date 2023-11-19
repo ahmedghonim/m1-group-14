@@ -3,5 +3,3 @@ export const i18n = {
   locales: ["ar", "en"],
   localeDetection: false,
 };
-
-// Path: pages/_app.js

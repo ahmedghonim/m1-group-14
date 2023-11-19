@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { i18n } from "@/i18n.config";
 
 function getLocale(request: any) {
-  const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
+  const locale = request.cookies.get("NEXT_LOCALE")?.value || "ar";
   return locale;
 }
 
