@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "@/i18n/client";
+
 import Address from "./location";
 import ContactDetails from "./details";
 import ContactCircles from "@svg/contact-circles.svg";
@@ -10,10 +10,10 @@ import Twitter from "@svg/twitter_2_w.svg";
 import Snap from "@svg/snap_w.svg";
 import Link from "next/link";
 import { Text } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 
 async function ContactUsForm({ lang }: { lang: "en" | "ar" }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   // Contact Info Head
   const InfoHead = ({ text }: { text: string }) => {
@@ -54,20 +54,20 @@ async function ContactUsForm({ lang }: { lang: "en" | "ar" }) {
           font="mid"
           className="!text-start !text-white lg:!text-[28px] sm:!text-sm !text-[20px] font-Lato"
         >
-          {t("contact_info")}
+          {common.contact_info}
         </Text>
         <Text
           as="p"
           className="!text-start lg:text-[18px] text-[11px] !text-white !mt-3 font-Lato"
         >
-          {t("say_something")}
+          {common.say_something}
         </Text>
       </div>
       <Address lang={lang}>
-        <InfoHead text={t("address")} />
+        <InfoHead text={common.address} />
       </Address>
       <ContactDetails>
-        <InfoHead text={t("contact_details")} />
+        <InfoHead text={common.contact_details} />
       </ContactDetails>
 
       <div className="w-full flex flex-col gap-6">

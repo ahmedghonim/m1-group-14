@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { getClientData } from "./api-calls";
 import { Button } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,13 +14,15 @@ async function Page({
     lang: string;
   };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   const data = await getClientData();
 
   return (
     <div>
       <Button style="primary">
-        <Link href={`/${lang}/admin/our-client/create`}>{t("create_new")}</Link>
+        <Link href={`/${lang}/admin/our-client/create`}>
+          {common.create_new}
+        </Link>
       </Button>
       <div>
         {data.map(({ image, id }: any, index) => (

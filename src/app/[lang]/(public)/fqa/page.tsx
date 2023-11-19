@@ -1,4 +1,4 @@
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import Head from "next/head";
 import React from "react";
 import { getFqaData } from "../../(admin)/admin/our-fqa/api-calls";
@@ -11,15 +11,15 @@ export default async function FAQ({
   params: { lang: "en" | "ar" };
 }) {
   const questions = (await getFqaData()) as any;
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   return (
     <>
       <Head>
-        <title>{t("pages-title:fqa")}</title>
+        <title>{common["fqa"]}</title>
       </Head>
       <FAQIntro lang={lang} />
-      <FAQS questions={questions} lang={lang} />
+      <FAQS common={common} questions={questions} lang={lang} />
     </>
   );
 }

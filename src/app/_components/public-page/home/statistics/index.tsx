@@ -1,26 +1,30 @@
 "use client";
 import clsx from "clsx";
-import { useTranslation } from "@/i18n/client";
+
 import React from "react";
 import { Text } from "@/app/_ui";
 import { NumbersInfo } from "@prisma/client";
 
-export default function Statistics({ data }: { data: NumbersInfo }) {
-  const { t } = useTranslation("common");
-
+export default function Statistics({
+  data,
+  common,
+}: {
+  data: NumbersInfo;
+  common: any;
+}) {
   const numbers = [
     {
       count: data?.service + "+",
-      name: t("services"),
+      name: common.services,
     },
     {
       count: data?.customer + "%",
-      name: t("usefully"),
+      name: common.usefully,
     },
 
     {
       count: data?.takeService + "K+",
-      name: t("client"),
+      name: common.client,
     },
   ];
 

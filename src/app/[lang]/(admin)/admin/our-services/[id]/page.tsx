@@ -1,5 +1,5 @@
 import { Button, Input } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import UploadImage from "@/app/_ui/upload-image";
 import TextEditor from "@/app/_ui/text-editor";
 import { deleteAction, getServiceById, upsertAction } from "../api-calls";
@@ -24,14 +24,14 @@ async function Page({
         image: "",
         id: null,
       };
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <div>
       {isUpdate && (
         <form action={deleteAction}>
           <input type="hidden" name="id" value={+data?.id} />
           <Button style="danger" type="submit" className="mb-10">
-            {t("delete")}
+            {common.delete}
           </Button>
         </form>
       )}
@@ -45,28 +45,28 @@ async function Page({
         <div className="col-span-12 flex flex-1 flex-col gap-10 mt-10">
           <Input
             name="title.ar"
-            label={t("ar_title")}
+            label={common.ar_title}
             defaultValue={data?.title?.ar}
           />
           <Input
             name="title.en"
-            label={t("en_title")}
+            label={common.en_title}
             defaultValue={data?.title?.en}
           />
           <TextEditor
-            label={t("ar_desc")}
+            label={common.ar_desc}
             value={data?.description?.ar}
             name="description.ar"
           />
           <TextEditor
-            label={t("en_desc")}
+            label={common.en_desc}
             value={data?.description?.en}
             name="description.en"
           />
         </div>
 
         <Button style="primary" type="submit" className="mt-10">
-          {t("submit")}
+          {common.submit}
         </Button>
       </form>
     </div>

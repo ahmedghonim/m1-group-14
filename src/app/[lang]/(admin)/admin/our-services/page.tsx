@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { deleteAction, getServiceData } from "./api-calls";
 import { Button } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import Link from "next/link";
 import { Service } from "@prisma/client";
 import ServesView from "@/app/_components/public-page/our-serves";
@@ -15,14 +15,14 @@ async function Page({
     lang: string;
   };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   const data = await getServiceData();
 
   return (
     <div>
       <Button style="primary">
         <Link href={`/${lang}/admin/our-services/create`}>
-          {t("create_new")}
+          {common.create_new}
         </Link>
       </Button>
       <div>

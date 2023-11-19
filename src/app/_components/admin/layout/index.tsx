@@ -7,6 +7,7 @@ import Faq from "@svg/fqa.svg";
 import Messages from "@svg/messages.svg";
 import { headers } from "next/headers";
 import { NextRequest } from "next/server";
+import { getDictionary } from "@/dictionary";
 
 export default async function DashboardLayout({
   children,
@@ -15,6 +16,7 @@ export default async function DashboardLayout({
   children: React.ReactNode;
   params: any;
 }) {
+  const { common } = await getDictionary(lang);
   const headersList = headers();
 
   const referer = headersList.get("referer");
@@ -64,7 +66,7 @@ export default async function DashboardLayout({
   return (
     <div className="flex flex-row gap-8">
       <nav className="flex flex-col gap-16 w-[299px] rounded-s-none rounded-3xl shadow-2xl h-screen sticky top-0 overflow-hidden">
-        <VerticalBar navBar={sideBar} className="relative" />
+        <VerticalBar common={common} navBar={sideBar} className="relative" />
       </nav>
       <main className=" flex flex-col gap-6 py-12 pe-9 overflow-y-auto">
         {children}

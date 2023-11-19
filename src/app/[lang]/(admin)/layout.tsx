@@ -1,13 +1,8 @@
 import React from "react";
-import { languages } from "@/i18n/settings";
 import DashboardLayout from "@/app/_components/admin/layout";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import prisma from "@/db_prisma/db";
-
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
-}
 
 export default async function Layout({
   children,

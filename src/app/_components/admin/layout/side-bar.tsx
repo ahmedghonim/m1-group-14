@@ -6,8 +6,11 @@ import OurClient from "@svg/our-client.svg";
 import Faq from "@svg/fqa.svg";
 import Messages from "@svg/messages.svg";
 import VerticalBar from "../../shared/vertical-bar";
+import { getDictionary } from "@/dictionary";
 
-function SideBar({ params }: { params: any }) {
+async function SideBar({ params }: { params: any }) {
+  const { lang } = params;
+  const { common } = await getDictionary(lang);
   const sideBar = [
     { name: "about-us", link: "/admin", icon: AboutUs },
     {
@@ -23,7 +26,7 @@ function SideBar({ params }: { params: any }) {
 
   return (
     <nav className="flex flex-col gap-16 w-[299px] rounded-s-none rounded-3xl shadow-2xl h-screen sticky top-0 overflow-hidden">
-      <VerticalBar navBar={sideBar} className="relative" />
+      <VerticalBar common={common} navBar={sideBar} className="relative" />
     </nav>
   );
 }

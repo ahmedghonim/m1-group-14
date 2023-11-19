@@ -1,7 +1,7 @@
 import { getInoNumbersData, upsertAction } from "./api-calls";
 import * as yup from "yup";
 import { Button, Input } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 
 export type NumbersInfo = any;
 async function Page({
@@ -12,7 +12,7 @@ async function Page({
   };
 }) {
   const data = (await getInoNumbersData()) as any;
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   return (
     <div>
@@ -20,7 +20,7 @@ async function Page({
         <div className="col-span-12 flex flex-1 flex-col gap-6 mt-10">
           <Input
             name="service"
-            label={t("service")}
+            label={common.service}
             type="number"
             defaultValue={data?.service}
           />
@@ -28,20 +28,20 @@ async function Page({
           <Input
             name="customer"
             type="number"
-            label={t("usefully")}
+            label={common.usefully}
             max={100}
             defaultValue={data?.customer}
           />
           <Input
             name="takeService"
             type="number"
-            label={t("client")}
+            label={common.client}
             defaultValue={data?.takeService}
           />
         </div>
 
         <Button style="primary" type="submit" className="mt-10">
-          {t("submit")}
+          {common.submit}
         </Button>
       </form>
     </div>

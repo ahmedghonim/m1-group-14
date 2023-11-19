@@ -1,5 +1,5 @@
 "use client";
-import { useTranslation } from "@/i18n/client";
+
 import React, { useRef } from "react";
 import SwiperArrow from "@svg/swiper-arrow.svg";
 
@@ -13,9 +13,7 @@ import "swiper/css/autoplay";
 import Image from "next/image";
 import { Text } from "@/app/_ui";
 
-export default function Clients({ data }: { data: any }) {
-  const { t } = useTranslation("common");
-
+export default function Clients({ data, common }: { data: any; common: any }) {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
@@ -26,7 +24,7 @@ export default function Clients({ data }: { data: any }) {
         font="bold"
         className="!text-[28px] md:!text-[48px] md:mb-[30px] lg:w-3/4 mx-auto"
       >
-        {t("our_clients")}
+        {common.our_clients}
       </Text>
 
       {/* -------- our clients -------- */}
@@ -71,7 +69,7 @@ export default function Clients({ data }: { data: any }) {
         </button>
       </div>
       <Text as="p" font="bold" className="mt-8 !text-[20px]">
-        {t("client_sub_word")}
+        {common.client_sub_word}
       </Text>
     </div>
   );

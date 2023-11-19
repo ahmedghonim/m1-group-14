@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { Button } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import UploadImage from "@/app/_ui/upload-image";
 import { deleteAction, getClientById, upsertAction } from "../api-calls";
 import { Client } from "@prisma/client";
@@ -22,14 +22,14 @@ async function Page({
         image: "",
         id: null,
       };
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <div>
       {isUpdate && (
         <form action={deleteAction}>
           <input type="hidden" name="id" value={+data?.id} />
           <Button style="danger" type="submit" className="mb-10">
-            {t("delete")}
+            {common.delete}
           </Button>
         </form>
       )}
@@ -41,7 +41,7 @@ async function Page({
         </div>
 
         <Button style="primary" type="submit" className="mt-10">
-          {t("submit")}
+          {common.submit}
         </Button>
       </form>
     </div>

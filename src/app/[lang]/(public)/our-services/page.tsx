@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import ServicesCover from "@image/services-cover.png";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import IntroSection from "@/app/_components/shared/intro-section";
 import { LinkButton, Text } from "@/app/_ui";
 import ServesView, {
@@ -14,12 +14,12 @@ async function OurService({
 }: {
   params: { lang: "en" | "ar" };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   const data = await getServiceData();
   return (
     <>
       <Head>
-        <title>{t("pages-title:our-services")}</title>
+        <title>{common["our-services"]}</title>
       </Head>
       <IntroSection image={ServicesCover}>
         <div className="w-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2]">
@@ -28,14 +28,14 @@ async function OurService({
             font="bold"
             className="!text-[40px] !text-primary-100 font-Lato"
           >
-            {t("our_services")}
+            {common.our_services}
           </Text>
           <Text
             as="p"
             font="semi"
             className="!text-[18px] !text-white font-Inter"
           >
-            {t("our_services_sub")}
+            {common.our_services_sub}
           </Text>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60" />
@@ -55,10 +55,10 @@ async function OurService({
         )}
         <div className="rounded-3xl bg-[#F2E4BF] h-[282px] flex flex-col justify-center items-center gap-7 px-2">
           <Text as="p" size="md" font="bold" className="text-black md:w-3/5 ">
-            {t("ourServiceDesc")}
+            {common.ourServiceDesc}
           </Text>
           <LinkButton lang={lang} href="/contact-us" rounded="full">
-            {t("contact")}
+            {common.contact}
           </LinkButton>
         </div>
       </div>

@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { useTranslation } from "@/i18n/client";
+
 import Plus from "@svg/plus.svg";
 import clsx from "clsx";
 import { Text } from "@/app/_ui";
+import { getDictionary } from "@/dictionary";
 
 interface SingleQuestionProps {
   number?: number;
@@ -52,11 +53,12 @@ export const SingleQuestion = ({ question, answer }: SingleQuestionProps) => {
 function FAQS({
   questions,
   lang,
+  common,
 }: {
   questions: SingleQuestionProps[];
   lang: string;
+  common: any;
 }) {
-  const { t } = useTranslation("common");
   return (
     <div className="my-14 px-6 md:px-[120px]">
       <Text
@@ -64,7 +66,7 @@ function FAQS({
         font="semi"
         className="!text-primary-100 font-Inter !text-3xl lg:!text-[48px] mb-4 md:!leading-[65px]"
       >
-        {t("frequently_head")}
+        {common.frequently_head}
       </Text>
       <div className="flex flex-col mx-auto lg:px-4">
         {questions.map(({ question, answer }, index) => {

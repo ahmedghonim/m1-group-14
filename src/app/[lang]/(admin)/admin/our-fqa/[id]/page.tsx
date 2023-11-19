@@ -1,5 +1,5 @@
 import { Button, Input } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import TextEditor from "@/app/_ui/text-editor";
 import { deleteAction, getFqaById, upsertAction } from "../api-calls";
 
@@ -22,14 +22,14 @@ async function Page({
 
         id: null,
       };
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <div>
       {isUpdate && (
         <form action={deleteAction}>
           <input type="hidden" name="id" value={+data?.id} />
           <Button style="danger" type="submit" className="mb-10">
-            {t("delete")}
+            {common.delete}
           </Button>
         </form>
       )}
@@ -39,28 +39,28 @@ async function Page({
         <div className="col-span-12 flex flex-1 flex-col gap-10 mt-10">
           <Input
             name="question.ar"
-            label={t("ar_question")}
+            label={common.ar_question}
             defaultValue={data?.question?.ar}
           />
           <Input
             name="question.en"
-            label={t("en_question")}
+            label={common.en_question}
             defaultValue={data?.question?.en}
           />
           <TextEditor
-            label={t("ar_answer")}
+            label={common.ar_answer}
             value={data?.answer?.ar}
             name="answer.ar"
           />
           <TextEditor
-            label={t("en_answer")}
+            label={common.en_answer}
             value={data?.answer?.en}
             name="answer.en"
           />
         </div>
 
         <Button style="primary" type="submit" className="mt-10">
-          {t("submit")}
+          {common.submit}
         </Button>
       </form>
     </div>

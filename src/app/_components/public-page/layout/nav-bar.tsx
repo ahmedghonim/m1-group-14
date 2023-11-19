@@ -7,27 +7,32 @@ import AboutIcon from "@svg/about-us.svg";
 import OurServesIcon from "@svg/our-serves.svg";
 import FQAIcon from "@svg/fqa.svg";
 import LogoIcon from "@svg/logo.svg";
-import { useTranslation } from "@/i18n/client";
 import { Button } from "@/app/_ui";
 import ChangeLang from "../../shared/change-lang";
 import VerticalBar from "../../shared/vertical-bar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-function NavBar() {
-  const { t } = useTranslation("pages-title");
-  const { t: tCommon } = useTranslation("common");
+function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
   const asPath = usePathname();
-  const lang = asPath.split("/")[1];
+
   const [openMenu, setOpenMenu] = useState(false);
   const navBar = [
-    { name: "home", link: "/", icon: LogoIcon },
-    { name: "our-services", link: "/our-services", icon: OurServesIcon },
-    { name: "about-us", link: "/about-us", icon: AboutIcon },
-    { name: "blog", link: "/blog", icon: FQAIcon },
-    { name: "contact-us", link: "/contact-us", icon: AboutIcon },
-    { name: "fqa", link: "/fqa", icon: FQAIcon },
-    { name: "terms-conditions", link: "/terms-conditions", icon: FQAIcon },
+    { name: common["home"], link: "/", icon: LogoIcon },
+    {
+      name: common["our-services"],
+      link: "/our-services",
+      icon: OurServesIcon,
+    },
+    { name: common["about-us"], link: "/about-us", icon: AboutIcon },
+    { name: common["blog"], link: "/blog", icon: FQAIcon },
+    { name: common["contact-us"], link: "/contact-us", icon: AboutIcon },
+    { name: common["fqa"], link: "/fqa", icon: FQAIcon },
+    {
+      name: common["terms-conditions"],
+      link: "/terms-conditions",
+      icon: FQAIcon,
+    },
   ];
 
   const isActiveTab = (_link: string) => asPath === _link;
@@ -51,7 +56,7 @@ function NavBar() {
               }
             )}
           >
-            {t(name)}
+            {name}
 
             <div className="absolute -bottom-3 left-0 h-1 w-0 bg-primary-100 rounded-full duration-300 line" />
           </Link>
@@ -65,7 +70,7 @@ function NavBar() {
           font="bold"
           className="!h-fit"
         >
-          {tCommon("contact")}
+          {common["contact"]}
         </Button>
         <ChangeLang />
       </div>
@@ -74,7 +79,13 @@ function NavBar() {
         <MenuIcon />
       </span>
 
-      {openMenu && <VerticalBar setOpenMenu={setOpenMenu} navBar={navBar} />}
+      {openMenu && (
+        <VerticalBar
+          common={common}
+          setOpenMenu={setOpenMenu}
+          navBar={navBar}
+        />
+      )}
     </nav>
   );
 }

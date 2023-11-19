@@ -5,7 +5,7 @@ import WhyUs from "../../_components/public-page/home/why-us";
 import Services from "../../_components/public-page/services";
 import Link from "next/link";
 import Clients from "../../_components/public-page/home/clients";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import { getHeroData } from "../(admin)/admin/api-calls";
 import { HeroTypes } from "../(admin)/admin/page";
 import { getInoNumbersData } from "../(admin)/admin/our-industries/api-calls";
@@ -20,7 +20,7 @@ export default async function Home({
 }: {
   params: { lang: "en" | "ar" };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   const heroData = (await getHeroData()) as HeroTypes;
   const inoNumbersData = (await getInoNumbersData()) as NumbersInfo;
   const aboutData = (await getAboutData()) as AboutTypes;
@@ -29,10 +29,10 @@ export default async function Home({
   return (
     <div>
       <section className="w-full">
-        <HomeIntro data={heroData} />
-        <Statistics data={inoNumbersData} />
+        <HomeIntro data={heroData} common={common} lang={lang} />
+        <Statistics data={inoNumbersData} common={common} />
         <AboutUS lang={lang} data={aboutData} />
-        <WhyUs />
+        <WhyUs common={common} />
         <Services
           className="bg-[#F2E4BF] md:pt-[70px] pt-10 md:pb-[108px] pb-10 px-6 rounded-[12px]"
           data={ServiceData as any}
@@ -43,11 +43,11 @@ export default async function Home({
               href={`/${lang}/our-services`}
               className="bg-dark-100 !text-[16px] py-3 px-5 text-white hover:opacity-60 duration-200 rounded font-Lato font-bold mt-6"
             >
-              {t("read_more")}
+              {common.read_more}
             </Link>
           </div>
         </Services>
-        <Clients data={clientData} />
+        <Clients common={common} data={clientData} />
       </section>
     </div>
   );

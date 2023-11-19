@@ -1,10 +1,6 @@
 import React from "react";
-import { languages } from "@/i18n/settings";
-import LayoutProvider from "../../_providers/layout-provider";
 
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
-}
+import LayoutProvider from "../../_providers/layout-provider";
 
 export default function Layout({
   children,

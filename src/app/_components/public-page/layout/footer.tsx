@@ -10,10 +10,10 @@ import Linkedin from "@svg/linkedin.svg";
 import Instagram from "@svg/instagram.svg";
 import Twitter from "@svg/twitter_2.svg";
 import Snap from "@svg/snap.svg";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 
 const Company = async ({ lang }: { lang: "en" | "ar" }) => {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   return (
     <div>
@@ -22,23 +22,23 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
         font="semi"
         className="!text-start !text-[13px] uppercase !text-[#454545] !font-Lato md:mb-10 mb-4"
       >
-        {t("company")}
+        {common.company}
       </Text>
       <ul>
         <li>
           <Link href={`/${lang}/`} className="font-medium font-Lato">
-            {t("home")}
+            {common.home}
           </Link>
         </li>
 
         <li>
           <Link href={`/${lang}/about-us`} className="font-medium font-Lato">
-            {t("about_us")}
+            {common.about_us}
           </Link>
         </li>
         <li>
           <Link href={`/${lang}/contact-us`} className="font-medium font-Lato">
-            {t("contact_us")}
+            {common.contact_us}
           </Link>
         </li>
         <li>
@@ -46,7 +46,7 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
             href={`/${lang}/our-services`}
             className="font-medium font-Lato"
           >
-            {t("our_services")}
+            {common.our_services}
           </Link>
         </li>
         <li>
@@ -54,22 +54,22 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
             href={`/${lang}/terms-conditions`}
             className="font-medium font-Lato"
           >
-            {t("terms-conditions")}
+            {common["terms-conditions"]}
           </Link>
         </li>
         <li>
           <Link href={`/${lang}/blog`} className="font-medium font-Lato">
-            {t("blog")}
+            {common.blog}
           </Link>
         </li>
         <li>
           <Link href={`/${lang}/fqa`} className="font-medium font-Lato">
-            {t("fqa")}
+            {common.fqa}
           </Link>
         </li>
         <li>
           <Link href={`/${lang}/login`} className="font-medium font-Lato">
-            {t("login_for_employee")}
+            {common.login_for_employee}
           </Link>
         </li>
       </ul>
@@ -78,7 +78,7 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
 };
 
 const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   return (
     <div>
@@ -87,7 +87,7 @@ const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
         font="semi"
         className="!text-start !text-[13px] uppercase !text-[#454545] !font-Lato md:mb-10 mb-4"
       >
-        {t("contacts")}
+        {common.contacts}
       </Text>
       <div className="flex items-center gap-4 ">
         <Phone />
@@ -107,7 +107,7 @@ const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
             target="_blank"
             href="https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
           >
-            {t("address_eg")}
+            {common.address_eg}
           </Link>
           <br />
         </address>
@@ -117,7 +117,7 @@ const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
           <Location />
         </div>
         <address className="font-Lato font-semibold text-sm">
-          {t("address_du")}
+          {common.address_du}
           <br />
         </address>
       </div>
@@ -132,7 +132,7 @@ const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
 };
 
 const SocialIcons = async ({ lang }: { lang: "en" | "ar" }) => {
-  const { t } = await translation("common");
+  const { common } = await getDictionary(lang);
 
   return (
     <div>
@@ -141,7 +141,7 @@ const SocialIcons = async ({ lang }: { lang: "en" | "ar" }) => {
         font="semi"
         className="!text-start !text-[13px] uppercase !text-[#454545] !font-Lato md:mb-10 mb-4"
       >
-        {t("get_in_touch")}
+        {common.get_in_touch}
       </Text>
 
       <div className="flex items-center gap-5">
@@ -186,7 +186,7 @@ const SocialIcons = async ({ lang }: { lang: "en" | "ar" }) => {
 };
 
 const NewsLetter = async ({ lang }: { lang: "en" | "ar" }) => {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <div>
       <Text
@@ -194,23 +194,23 @@ const NewsLetter = async ({ lang }: { lang: "en" | "ar" }) => {
         font="semi"
         className="!text-start !text-[13px] uppercase !text-[#454545] !font-Lato md:mb-10 mb-4"
       >
-        {t("news_litter")}
+        {common.news_litter}
       </Text>
 
       <input
         type="email"
-        placeholder={t("mail_placeholder")}
+        placeholder={common.mail_placeholder}
         className="bg-white rounded-[10px] py-[14px] w-full px-4 outline-none border-[1px] border-[#E4E4E7]"
       />
       <Button style="secondary" className="w-full !mt-4 py-3">
-        {t("subscribe_now")}
+        {common.subscribe_now}
       </Button>
     </div>
   );
 };
 
 export default async function Footer({ lang }: { lang: "en" | "ar" }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   const currentYear = new Date().getFullYear();
 
@@ -246,9 +246,10 @@ export default async function Footer({ lang }: { lang: "en" | "ar" }) {
         </div>
       </div>
       {/* -------- bottom section ------- */}
-      <Text as="p" className="md:mt-[72px] mt-[42px]">{`${t(
-        "copy_writes_start"
-      )} ${currentYear} ,${t("copy_writes_end")}`}</Text>
+      <Text
+        as="p"
+        className="md:mt-[72px] mt-[42px]"
+      >{`${common.copy_writes_start} ${currentYear} , ${common.copy_writes_end}`}</Text>
     </footer>
   );
 }

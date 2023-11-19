@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import AboutusCover from "@image/aboutus-cover.png";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import IntroSection from "@/app/_components/shared/intro-section";
 import { Text } from "@/app/_ui";
 import ContactUsForm from "@/app/_components/public-page/contact-us/contact-infos";
@@ -12,11 +12,11 @@ export default async function AboutUs({
 }: {
   params: { lang: "en" | "ar" };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <>
       <Head>
-        <title>{t("pages-title:about-us")}</title>
+        <title>{common["about-us"]}</title>
       </Head>
 
       <IntroSection image={AboutusCover}>
@@ -30,7 +30,7 @@ export default async function AboutUs({
             font="bold"
             className="!text-start !text-[20px] lg:!text-[40px] !text-primary-100 font-Lato"
           >
-            {t("about_us")}
+            {common.about_us}
           </Text>
 
           <div className="mt-[20px] flex flex-col gap-6 md:w-[85%]">
@@ -38,25 +38,25 @@ export default async function AboutUs({
               as="p"
               className="!text-start leading-8 font-Lato !text-[16px] lg:!text-[21px]"
             >
-              - {t("about_us_1")}
+              - {common.about_us_1}
             </Text>
             <Text
               as="p"
               className="!text-start leading-8 font-Lato !text-[16px] lg:!text-[21px]"
             >
-              - {t("about_us_2")}
+              - {common.about_us_2}
             </Text>
             <Text
               as="p"
               className="!text-start leading-8 font-Lato !text-[16px] lg:!text-[21px]"
             >
-              - {t("about_us_3")}
+              - {common.about_us_3}
             </Text>
             <Text
               as="p"
               className="!text-start leading-8 font-Lato !text-[16px] lg:!text-[21px]"
             >
-              - {t("about_us_4")}
+              - {common.about_us_4}
             </Text>
           </div>
         </div>

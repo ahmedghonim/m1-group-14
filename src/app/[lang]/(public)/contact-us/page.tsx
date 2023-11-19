@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import ContactCover from "@image/contact-cover.png";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import IntroSection from "@/app/_components/shared/intro-section";
 import { Button, Input, Text } from "@/app/_ui";
 import { createMessagesAction } from "../../(admin)/admin/messages/api-calls";
@@ -13,13 +13,12 @@ export default async function ContactUsSSS({
 }: {
   params: { lang: "en" | "ar" };
 }) {
-  const { t } = await translation(lang, "pages-title");
-  const { t: commonT } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
 
   return (
     <>
       <Head>
-        <title>{t("contact-us")}</title>
+        <title>{common["contact-us"]}</title>
       </Head>
       <IntroSection image={ContactCover}>
         <div className="w-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2]">
@@ -28,14 +27,14 @@ export default async function ContactUsSSS({
             font="bold"
             className="!text-[40px] !text-primary-100 font-Lato"
           >
-            {commonT("contact_us")}
+            {common["contact_us"]}
           </Text>
           <Text
             as="p"
             font="semi"
             className="!text-[18px] !text-white font-Inter"
           >
-            {commonT("contact_us_sub")}
+            {common["contact_us_sub"]}
           </Text>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[1]" />
@@ -57,36 +56,36 @@ export default async function ContactUsSSS({
                 <div className="grid md:grid-cols-2 md:gap-8 gap-4">
                   <ContactInput
                     name="first_name"
-                    placeHolder={commonT("first_name")}
-                    label={commonT("first_name")}
+                    placeHolder={common["first_name"]}
+                    label={common["first_name"]}
                   />
                   <ContactInput
                     name="last_name"
-                    placeHolder={commonT("last_name")}
-                    label={commonT("last_name")}
+                    placeHolder={common["last_name"]}
+                    label={common["last_name"]}
                   />
                   <ContactInput
                     name="email"
-                    placeHolder={commonT("email")}
+                    placeHolder={common["email"]}
                     type="email"
-                    label={commonT("email")}
+                    label={common["email"]}
                   />
                   <ContactInput
                     name="phone"
-                    placeHolder={commonT("phone_number")}
-                    label={commonT("phone_number")}
+                    placeHolder={common["phone_number"]}
+                    label={common["phone_number"]}
                   />
                   <ContactInput
                     name="subject"
-                    placeHolder={commonT("subject")}
-                    label={commonT("subject")}
+                    placeHolder={common["subject"]}
+                    label={common["subject"]}
                   />
                 </div>
                 <div className="bg-light-300 !rounded-[4px]">
                   <ContactInput
                     name="message"
-                    placeHolder={commonT("message")}
-                    label={commonT("message")}
+                    placeHolder={common["message"]}
+                    label={common["message"]}
                   />
                 </div>
                 <div className="flex justify-end">
@@ -96,7 +95,7 @@ export default async function ContactUsSSS({
                     className="sm:!w-fit w-full ml-auto py-[15px] !px-[48px] !rounded !text-[16px] "
                     font="mid"
                   >
-                    {commonT("send_message")}
+                    {common["send_message"]}
                   </Button>
                 </div>
               </form>

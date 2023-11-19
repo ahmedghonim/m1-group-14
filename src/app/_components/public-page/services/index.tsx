@@ -2,7 +2,7 @@ import { Text } from "@/app/_ui";
 import Image from "next/image";
 import React from "react";
 import clsx from "clsx";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 
 interface ServicesCardProps {
   image: string;
@@ -49,7 +49,7 @@ export default async function Services({
   children,
   lang,
 }: ServicesProps) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   return (
     <div className="md:pt-[124px] pt-[40px]">
       <Text
@@ -57,7 +57,7 @@ export default async function Services({
         font="bold"
         className={clsx("!mb-10 !text-3xl lg:!text-[48px]", headStyle)}
       >
-        {t("our_services")}
+        {common.our_services}
       </Text>
 
       {/* -------- our services ------- */}

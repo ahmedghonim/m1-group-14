@@ -1,7 +1,7 @@
 import { SingleQuestion } from "@/app/_components/public-page/faq/single-faq";
 import { getFqaData } from "./api-calls";
 import { Button } from "@/app/_ui";
-import { translation } from "@/i18n";
+import { getDictionary } from "@/dictionary";
 import Link from "next/link";
 
 export type HeroTypes = any;
@@ -13,12 +13,12 @@ async function Page({
     lang: string;
   };
 }) {
-  const { t } = await translation(lang, "common");
+  const { common } = await getDictionary(lang);
   const data = await getFqaData();
   return (
     <div>
       <Button style="primary">
-        <Link href={`/${lang}/admin/our-fqa/create`}>{t("create_new")}</Link>
+        <Link href={`/${lang}/admin/our-fqa/create`}>{common.create_new}</Link>
       </Button>
       <div>
         {data.map(({ answer, question, id }: any, index) => (
@@ -27,7 +27,7 @@ async function Page({
               className="text-green-500 px-6 hover:text-green-700"
               href={`/${lang}/admin/our-fqa/${id}`}
             >
-              {t("edit")}
+              {common.edit}
             </Link>
             <SingleQuestion question={question[lang]} answer={answer[lang]} />
           </div>

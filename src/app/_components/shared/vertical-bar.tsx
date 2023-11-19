@@ -5,7 +5,6 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import ChangeLang from "./change-lang";
-import { useTranslation } from "@/i18n/client";
 
 type Props = {
   navBar: {
@@ -13,13 +12,13 @@ type Props = {
     name: string;
     icon: ReactNode;
   }[];
+  common: any;
   setOpenMenu?: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
 };
 
-function VerticalBar({ setOpenMenu, navBar, className }: Props) {
+function VerticalBar({ setOpenMenu, navBar, className, common }: Props) {
   const asPath = usePathname();
-  const { t } = useTranslation("common");
 
   const isActiveTab = (_link: string) => asPath === _link;
 
@@ -48,7 +47,7 @@ function VerticalBar({ setOpenMenu, navBar, className }: Props) {
               )}
             >
               {Icon}
-              {t(name)}
+              {common.name}
             </span>
           </Link>
         ))}
