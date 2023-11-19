@@ -8,12 +8,12 @@ import LangIcon from "@svg/lang.svg";
 function ChangeLang() {
   const asPath = usePathname();
   const lang = asPath.split("/")[1];
-
+  console.log(" asPath>>>> ", asPath);
   return (
     <div className="flex items-center gap-2">
       <LangIcon />
       <Link
-        href={`/en/${asPath.split("/")[2]}`}
+        href={`/en/${asPath.split("/")[2] || ""}`}
         className={clsx("text-black", {
           "text-opacity-50": "en",
         })}
@@ -21,7 +21,7 @@ function ChangeLang() {
         {"EN"}
       </Link>
       <Link
-        href={`/ar/${asPath.split("/")[2]}`}
+        href={`/ar/${asPath.split("/")[2] || ""}`}
         className={clsx("text-black", {
           "text-opacity-50": "ar",
         })}
