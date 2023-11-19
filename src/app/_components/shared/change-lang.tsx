@@ -7,8 +7,6 @@ import LangIcon from "@svg/lang.svg";
 
 function ChangeLang() {
   const asPath = usePathname();
-  const lang = asPath.split("/")[1];
-  console.log(" asPath>>>> ", asPath);
   return (
     <div className="flex items-center gap-2">
       <LangIcon />
