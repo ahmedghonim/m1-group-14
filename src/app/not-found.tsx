@@ -3,6 +3,7 @@ import React from "react";
 import NotFoundImg from "../app/_assets/svg/not_found_img.svg";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { getDictionary } from "@/dictionary";
 
 const NotFoundPage = () => {
   const dictionaries: any = {

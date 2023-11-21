@@ -1,4 +1,98 @@
+import { getDictionary } from "@/dictionary";
 import "@styles/globals.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    lang: string;
+  };
+}) {
+  const { meta } = await getDictionary(params.lang);
+
+  return {
+    title: {
+      template: `${meta.title} | %s`,
+      default: meta.title,
+    },
+    description: meta.description,
+    keywords: meta.keywords,
+    author: "m1group-mr",
+    applicationName: "m1group-mr",
+    metadataBase: new URL("https://m1group-mr.com"),
+    alternates: {
+      canonical: "/ar",
+      languages: {
+        ar: "/ar",
+        en: "/en",
+        "en-US": "/en",
+        "en-au": "/en",
+        "en-bz": "/en",
+        "en-ca": "/en",
+        "en-ie": "/en",
+        "en-jm": "/en",
+        "en-nz": "/en",
+        "en-za": "/en",
+        "en-tt": "/en",
+        "en-gb": "/en",
+        "en-us": "/en",
+        "ar-AR": "/ar",
+        "ar-dz": "/ar",
+        "ar-bh": "/ar",
+        "ar-eg": "/ar",
+        "ar-iq": "/ar",
+        "ar-jo": "/ar",
+        "ar-kw": "/ar",
+        "ar-lb": "/ar",
+        "ar-ly": "/ar",
+        "ar-ma": "/ar",
+        "ar-om": "/ar",
+        "ar-qa": "/ar",
+        "ar-sa": "/ar",
+        "ar-sy": "/ar",
+        "ar-tn": "/ar",
+        "ar-ae": "/ar",
+        "ar-ye": "/ar",
+      },
+    },
+
+    openGraph: {
+      type: "website",
+      title: meta.title,
+      url: "https://m1group-mr.com/",
+      site_name: "m1group-mr",
+      images: [
+        {
+          url: "./favicon.ico",
+          width: 800,
+          height: 600,
+          alt: "m1group",
+        },
+      ],
+    },
+    icons: {
+      icon: "./favicon.ico",
+    },
+
+    // twitter: {
+    //   card: "summary",
+    //   site: "@m1groupmrcom",
+    //   title: meta.title,
+    //   description: meta.description,
+    //   images: ["./favicon.ico"],
+    //   siteId: "1676964166446514176",
+    //   creator: "@m1groupmrcom",
+    //   creatorId: "1676964166446514176",
+    // },
+
+    // facebook: {
+    //   // appId: "106751785818106",
+    //   pages: "106751785818106",
+    //   page: "106751785818106",
+    // },
+  };
+}
+
 export default async function RootLayout({ children }: { children: any }) {
   return (
     <html>

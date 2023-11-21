@@ -7,7 +7,7 @@ const upsertAction = async (formData: FormData) => {
   const object = Object.fromEntries(formData);
   const { image, ...value } = object;
   const data = await getAboutData();
-  console.log("value >>>> ", value);
+
   try {
     let imageUrl = "";
 
