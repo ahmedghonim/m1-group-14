@@ -24,7 +24,7 @@ async function Page({
           {common.create_new}
         </Link>
       </Button>
-      <div>
+      <div className="flex flex-wrap">
         {data.map(({ image, id }: any, index) => (
           <div
             key={index}

@@ -39,7 +39,6 @@ const upsertAction = async (formData: FormData) => {
         data: values,
       });
     } else {
-      console.log("value ahmed>>>> ", value);
       await prisma.service.create({
         data: {
           ...values,

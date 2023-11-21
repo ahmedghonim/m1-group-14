@@ -42,9 +42,12 @@ export const SingleQuestion = ({ question, answer }: SingleQuestionProps) => {
         </span>
       </div>
       <div className="collapse-content">
-        <Text as="p" className=" md:pb-10 pb-2 !text-start leading-8">
-          {answer}
-        </Text>
+        <p
+          className="!text-start"
+          dangerouslySetInnerHTML={{
+            __html: answer,
+          }}
+        />
       </div>
     </div>
   );
