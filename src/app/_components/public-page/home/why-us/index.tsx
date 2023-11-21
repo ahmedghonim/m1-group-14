@@ -17,10 +17,10 @@ const SingleCard = async ({ common, title, Icon, desc }: SingleCardType) => {
     <div className="flex flex-col items-center gap-3">
       <Icon />
       <Text font="bold" as="h2" className="text-[28px] font-Lato ">
-        {common.title}
+        {common[title]}
       </Text>
       <p
-        // dangerouslySetInnerHTML={{ __html: common.desc }}
+        dangerouslySetInnerHTML={{ __html: common[desc] }}
         className="text-start text-sm font-Lato font-bold"
       />
     </div>
