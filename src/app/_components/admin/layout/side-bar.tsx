@@ -13,6 +13,7 @@ async function SideBar({ params }: { params: any }) {
   const { common } = await getDictionary(lang);
   const sideBar = [
     { name: "about-us", link: "/admin", icon: AboutUs },
+    { name: "blog", link: "/admin/blog", icon: AboutUs },
     {
       name: "our-industries",
       link: "admin/our-industries",
