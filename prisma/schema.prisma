@@ -10,7 +10,6 @@ datasource db {
 
 model About {
   id          Int    @id @default(autoincrement())
-  image       String
   title       Json
   description Json
 }

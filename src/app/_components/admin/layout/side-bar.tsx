@@ -19,6 +19,11 @@ async function SideBar({ params }: { params: any }) {
       link: "admin/our-industries",
       icon: OurIndustries,
     },
+    {
+      name: "contacts",
+      link: "admin/contacts",
+      icon: OurIndustries,
+    },
     { name: "our-services", link: "/admin/our-services", icon: OurServes },
     { name: "our-client", link: "/admin/our-client", icon: OurClient },
     { name: "fqa", link: "/admin/our-fqa", icon: Faq },

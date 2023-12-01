@@ -48,6 +48,11 @@ export default async function DashboardLayout({
       icon: <OurIndustries className="fill-current" />,
     },
     {
+      name: "contacts",
+      link: `/${lang}/admin/contacts`,
+      icon: <OurIndustries className="fill-current" />,
+    },
+    {
       name: "our-services",
       link: `/${lang}/admin/our-services`,
       icon: <OurServes className="fill-current" />,

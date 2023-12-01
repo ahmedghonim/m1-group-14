@@ -5,17 +5,10 @@ import { revalidatePath } from "next/cache";
 
 const upsertAction = async (formData: FormData) => {
   const object = Object.fromEntries(formData);
-  const { image, ...value } = object;
+  const { ...value } = object;
   const data = await getAboutData();
 
   try {
-    let imageUrl = "";
-
-    if (typeof image !== "string") {
-      const { url } = await uploadFile(image);
-      imageUrl = url;
-    }
-
     const values = {
       title: {
         ar: value["title.ar"],
@@ -25,11 +18,8 @@ const upsertAction = async (formData: FormData) => {
         ar: value["description.ar"],
         en: value["description.en"],
       } as any,
-      image: imageUrl,
     } as any;
-    if (imageUrl === "") {
-      delete values.image;
-    }
+
     if (data?.id === undefined) {
       await prisma.about.create({
         data: {
