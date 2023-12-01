@@ -12,10 +12,9 @@ const upsertAction = async (formData: FormData) => {
   try {
     let imageUrl = "";
 
-    if (image.size !== 0) {
-      const { url } = await put("ss", image, {
+    if (typeof image !== "string") {
+      const { url } = await put(image.name, image, {
         access: "public",
-        token: "vercel_blob_rw_OBYfhkJQE6LLgeTe_tSgcL7V2GiNEIf7EsvIWwVygZdfVO2",
       });
       imageUrl = url;
     }
