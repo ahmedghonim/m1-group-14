@@ -93,9 +93,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({ children }: { children: any }) {
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: any;
+  params: {
+    lang: string;
+  };
+}) {
   return (
-    <html>
+    <html lang={params.lang} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>

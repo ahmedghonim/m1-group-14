@@ -26,28 +26,32 @@ const upsertAction = async (formData: FormData) => {
         en: value["description.en"],
       } as any,
       image: imageUrl,
+      date: value["date"],
+      author: value["author"],
+      category: value["category"],
+      attachment: value["attachment"],
     } as any;
     if (imageUrl === "") {
       delete values.image;
     }
     if (+id !== 0) {
-      await prisma.service.update({
+      await prisma.blog.update({
         where: {
           id: +id,
         },
         data: values,
       });
     } else {
-      await prisma.service.create({
+      await prisma.blog.create({
         data: {
           ...values,
         },
       });
     }
-    revalidatePath("/[lang]/admin/service-us", "page");
-    redirect("/ar/admin/our-services");
+    revalidatePath("/[lang]/admin/blog", "page");
+    redirect("/ar/admin/blog");
   } catch (error) {
-    redirect("/ar/admin/our-services");
+    redirect("/ar/admin/blog");
   }
 };
 
@@ -55,25 +59,25 @@ async function deleteAction(formData: FormData) {
   const object = Object.fromEntries(formData);
   const { id } = object;
   try {
-    const data = await prisma.service.delete({
+    const data = await prisma.blog.delete({
       where: {
         id: +id,
       },
     });
-    revalidatePath("/[lang]/admin/our-services", "page");
-    redirect("/admin/our-services");
+    revalidatePath("/[lang]/admin/our-blogs", "page");
+    redirect("/admin/our-blogs");
   } catch (error) {
-    redirect("/admin/our-services");
+    redirect("/admin/our-blogs");
   }
 }
 
-const getServiceData = async () => prisma.service.findMany();
+const getBlogData = async () => prisma.blog.findMany();
 
-const getServiceById = async (id: number) =>
-  prisma.service.findUnique({
+const getBlogById = async (id: number) =>
+  prisma.blog.findUnique({
     where: {
       id: id,
     },
   });
 
-export { upsertAction, deleteAction, getServiceData, getServiceById };
+export { upsertAction, deleteAction, getBlogData, getBlogById };

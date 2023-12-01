@@ -2,7 +2,7 @@ import { Button, Input } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
 import UploadImage from "@/app/_ui/upload-image";
 import TextEditor from "@/app/_ui/text-editor";
-import { deleteAction, getServiceById, upsertAction } from "../api-calls";
+import { deleteAction, getBlogById, upsertAction } from "../api-calls";
 import { Service } from "@prisma/client";
 
 export type ServiceTypes = any;
@@ -17,7 +17,7 @@ async function Page({
 }) {
   const isUpdate = id !== "create";
   const data = isUpdate
-    ? ((await getServiceById(+id)) as any)
+    ? ((await getBlogById(+id)) as any)
     : {
         title: { ar: "", en: "" },
         description: { ar: "", en: "" },
@@ -27,6 +27,14 @@ async function Page({
   const { common } = await getDictionary(lang);
   return (
     <div>
+      {/* id          Int    @id @default(autoincrement())
+  
+
+
+
+
+
+  attachment  String */}
       {isUpdate && (
         <form action={deleteAction}>
           <input type="hidden" name="id" value={+data?.id} />
@@ -37,12 +45,28 @@ async function Page({
       )}
       <form action={upsertAction} className="grid grid-cols-12">
         <input type="hidden" name="id" value={+data?.id} />
-        <div className="col-span-12 h-[450px]">
+        <div className="col-span-12 h-[450px] w-[450px]">
           <input type="file" name="image" />
           <UploadImage name="image" value={data?.image} />
         </div>
 
         <div className="col-span-12 flex flex-1 flex-col gap-10 mt-10">
+          <Input
+            name="date"
+            label={common.date}
+            type="date"
+            defaultValue={data?.date}
+          />
+          <Input
+            name="author"
+            label={common.author}
+            defaultValue={data?.author}
+          />
+          <Input
+            name="category"
+            label={common.category}
+            defaultValue={data?.category}
+          />
           <Input
             name="title.ar"
             label={common.ar_title}
@@ -62,6 +86,11 @@ async function Page({
             label={common.en_desc}
             value={data?.description?.en}
             name="description.en"
+          />
+          <Input
+            name="attachment"
+            label={common.attachment}
+            defaultValue={data?.attachment}
           />
         </div>
 

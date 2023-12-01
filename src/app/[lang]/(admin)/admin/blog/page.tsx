@@ -1,9 +1,11 @@
 import * as yup from "yup";
-import { getServiceData } from "./api-calls";
+import { getBlogData } from "./api-calls";
 import { Button } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
 import Link from "next/link";
 import ServesView from "@/app/_components/public-page/our-serves";
+import BlogCard from "@/app/_components/shared/blog-card";
+import { Blog } from "@prisma/client";
 
 export type HeroTypes = any;
 
@@ -15,32 +17,21 @@ async function Page({
   };
 }) {
   const { common } = await getDictionary(lang);
-  const data = await getServiceData();
+  const data = await getBlogData();
 
   return (
     <div>
       <Button style="primary">
-        <Link href={`/${lang}/admin/our-services/create`}>
-          {common.create_new}
-        </Link>
+        <Link href={`/${lang}/admin/blog/create`}>{common.create_new}</Link>
       </Button>
-      <div>
-        {data.map(
-          ({ image, title, description, favoriteNum, id }: any, index) => (
-            <div
-              key={index}
-              className="shadow-md m-5 rounded-md hover:shadow-xl"
-            >
-              <Link href={`/${lang}/admin/our-services/${id}`}>
-                <ServesView
-                  src={image}
-                  desc={description[lang]}
-                  title={title[lang]}
-                />
-              </Link>
-            </div>
-          )
-        )}
+      <div className="grid gap-10 mt-20 lg:gap-10 md:grid-cols-2 xl:grid-cols-3">
+        {data.map((item: Blog, index) => (
+          <div key={index} className="shadow-md m-5 rounded-md hover:shadow-xl">
+            <Link href={`/${lang}/admin/blog/${item.id}`}>
+              <BlogCard data={item} lang={lang} />
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

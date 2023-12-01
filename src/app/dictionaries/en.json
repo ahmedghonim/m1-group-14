@@ -129,13 +129,15 @@
     "en_answer": "English Answer",
     "GET_IN_TOUCH": "GET IN TOUCH",
     "login_for_employee": "Login For Employee",
-
     "client_name": "Client Name",
     "admin": "About Us",
-
     "contact-us": "Contact Us",
-
-    "blog": "Blog"
+    "blog": "Blog",
+    "category": "Category",
+    "attachment": "Attachment",
+    "date": "Date",
+    "author": "Author",
+    "view_all_blogs": "View All Blogs"
   },
   "pages-title": {
     "admin": "About Us",
