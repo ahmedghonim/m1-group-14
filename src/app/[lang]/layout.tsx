@@ -72,7 +72,7 @@ export async function generateMetadata({
       ],
     },
     icons: {
-      icon: "./favicon.ico",
+      icon: "../favicon.ico",
     },
 
     // twitter: {
@@ -105,7 +105,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../favicon.ico" sizes="any" />
         <title>
           مكتب محاسبة ومراجعة للاستشارات الضريبية والقانونية M1 GROUP
         </title>

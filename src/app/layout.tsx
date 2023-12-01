@@ -97,12 +97,7 @@ export default async function RootLayout({ children }: { children: any }) {
   return (
     <html>
       <head>
-        <link
-          rel="icon"
-          href="./favicon.ico"
-          type="image/png"
-          sizes="114x114"
-        />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>{children}</body>
     </html>

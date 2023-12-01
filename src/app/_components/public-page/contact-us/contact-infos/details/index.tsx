@@ -1,22 +1,42 @@
 import React from "react";
 import Mail from "@svg/contact-mail.svg";
+import { Contact } from "@prisma/client";
 
-function ContactDetails({ children }: { children: React.ReactNode }) {
+function ContactDetails({
+  children,
+  data,
+}: {
+  children: React.ReactNode;
+  data: Contact | null;
+}) {
   return (
     <div className="flex gap-2">
       <Mail className="stroke-white relative top-1" />
       <div className="flex flex-col">
         {children}
         <div className="flex flex-col lg:text-[20px] sm:text-[12px] text-[18px]">
-          <a className="text-white  font-bold" href="tel:0550558253">
-            01093000010{" "}
-          </a>
-          <a
-            className="text-white font-bold break-all"
-            href="mailto:info@m1group-mr.com"
-          >
-            info@m1group-mr.com
-          </a>
+          {data?.phone?.map((phone, index) => {
+            return (
+              <a
+                key={index}
+                className="text-white font-bold break-all"
+                href={`tel:${phone}`}
+              >
+                {phone}
+              </a>
+            );
+          })}
+          {data?.email?.map((email, index) => {
+            return (
+              <a
+                key={index}
+                className="text-white font-bold break-all"
+                href={`mailto:${email}`}
+              >
+                {email}
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>

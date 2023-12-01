@@ -11,10 +11,11 @@ import Snap from "@svg/snap_w.svg";
 import Link from "next/link";
 import { Text } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
+import { getContactsData } from "@/app/[lang]/(admin)/admin/contacts/api-calls";
 
 async function ContactUsForm({ lang }: { lang: "en" | "ar" }) {
   const { common } = await getDictionary(lang);
-
+  const data = await getContactsData();
   // Contact Info Head
   const InfoHead = ({ text }: { text: string }) => {
     return (
@@ -63,34 +64,43 @@ async function ContactUsForm({ lang }: { lang: "en" | "ar" }) {
           {common.say_something}
         </Text>
       </div>
-      <Address lang={lang}>
+      <Address data={data} lang={lang}>
         <InfoHead text={common.address} />
       </Address>
-      <ContactDetails>
+      <ContactDetails data={data}>
         <InfoHead text={common.contact_details} />
       </ContactDetails>
 
       <div className="w-full flex flex-col gap-6">
         <div className="flex gap-3 ">
           <SocialIcon
-            href="https://www.facebook.com/MRizkEgy1"
+            href={data?.fb || "https://www.facebook.com/MRizkEgy1"}
             icon={Facebook}
           />
 
           <SocialIcon
-            href="https://www.instagram.com/mohamed.rezkbdah/"
+            href={data?.insta || "https://www.instagram.com/mohamed.rezkbdah/"}
             icon={Instagram}
           />
 
           <SocialIcon
-            href="http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+            href={
+              data?.linked ||
+              "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+            }
             icon={Linkedin}
           />
 
-          <SocialIcon href="https://twitter.com/M1_GROUP" icon={Twitter} />
+          <SocialIcon
+            href={data?.tw || "https://twitter.com/M1_GROUP"}
+            icon={Twitter}
+          />
 
           <SocialIcon
-            href="http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+            href={
+              data?.snap ||
+              "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+            }
             icon={Snap}
           />
         </div>

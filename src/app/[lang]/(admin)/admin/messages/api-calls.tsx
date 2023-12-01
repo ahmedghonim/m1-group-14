@@ -37,8 +37,4 @@ async function deleteAction(formData: FormData) {
 
 const getMessagesData = async () => prisma.messages.findMany();
 
-export {
-  createMessagesAction,
-  deleteAction,
-  getMessagesData as getContactData,
-};
+export { createMessagesAction, deleteAction, getMessagesData };

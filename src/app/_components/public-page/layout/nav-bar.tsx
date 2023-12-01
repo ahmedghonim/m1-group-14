@@ -18,20 +18,20 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
 
   const [openMenu, setOpenMenu] = useState(false);
   const navBar = [
-    { name: common["home"], link: "/", icon: LogoIcon },
+    { name: common["home"], link: "/", icon: <LogoIcon /> },
     {
       name: common["our-services"],
       link: "/our-services",
-      icon: OurServesIcon,
+      icon: <OurServesIcon />,
     },
-    { name: common["about-us"], link: "/about-us", icon: AboutIcon },
-    { name: common["blog"], link: "/blog", icon: FQAIcon },
-    { name: common["contact-us"], link: "/contact-us", icon: AboutIcon },
-    { name: common["fqa"], link: "/fqa", icon: FQAIcon },
+    { name: common["about-us"], link: "/about-us", icon: <AboutIcon /> },
+    { name: common["blog"], link: "/blog", icon: <FQAIcon /> },
+    { name: common["contact-us"], link: "/contact-us", icon: <AboutIcon /> },
+    { name: common["fqa"], link: "/fqa", icon: <FQAIcon /> },
     {
       name: common["terms-conditions"],
       link: "/terms-conditions",
-      icon: FQAIcon,
+      icon: <FQAIcon />,
     },
   ];
 

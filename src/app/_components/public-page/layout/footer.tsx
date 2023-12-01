@@ -11,10 +11,12 @@ import Instagram from "@svg/instagram.svg";
 import Twitter from "@svg/twitter_2.svg";
 import Snap from "@svg/snap.svg";
 import { getDictionary } from "@/dictionary";
+import { getContactsData } from "@/app/[lang]/(admin)/admin/contacts/api-calls";
+import { Contact } from "@prisma/client";
 
 const Company = async ({ lang }: { lang: "en" | "ar" }) => {
   const { common } = await getDictionary(lang);
-
+  const data = await getContactsData();
   return (
     <div>
       <Text
@@ -77,7 +79,13 @@ const Company = async ({ lang }: { lang: "en" | "ar" }) => {
   );
 };
 
-const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
+const Contacts = async ({
+  lang,
+  data,
+}: {
+  lang: "en" | "ar";
+  data: Contact | null;
+}) => {
   const { common } = await getDictionary(lang);
 
   return (
@@ -89,49 +97,74 @@ const Contacts = async ({ lang }: { lang: "en" | "ar" }) => {
       >
         {common.contacts}
       </Text>
-      <div className="flex items-center gap-4 ">
-        <Phone />
-        <Text font="semi" className="font-Lato">
-          01093000010
-        </Text>
+      <div className="flex items-start gap-4 flex-col">
+        {data?.phone.map((phone, index) => (
+          <div key={index} className="flex gap-4">
+            <Phone />
+            <Link
+              href={"tell:" + phone}
+              className="font-Lato text-dark-100 text-center gap-3 font-semibold "
+            >
+              {phone}
+            </Link>
+          </div>
+        ))}
       </div>
-      <div className="flex group items-center gap-4 my-[10px]">
-        <Link
-          target="_blank"
-          href="https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
-        >
-          <Location className="group-hover:fill-primary-100" />
-        </Link>
-        <address className="font-Lato font-semibold text-sm group-hover:text-primary-100 hover:underline">
-          <Link
-            target="_blank"
-            href="https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
-          >
-            {common.address_eg}
-          </Link>
-          <br />
-        </address>
-      </div>
-      <div className="flex items-center gap-4 my-[10px]">
-        <div>
-          <Location />
+      {
+        <div className="flex items-start gap-4 flex-col mt-4">
+          {data?.email.map((email, index) => (
+            <div key={index} className="flex gap-4">
+              <Mail />
+              <Link
+                href={`mailto:${email}`}
+                className="font-Lato text-dark-100 text-center gap-3 font-semibold "
+              >
+                {email}
+              </Link>
+            </div>
+          ))}
         </div>
-        <address className="font-Lato font-semibold text-sm">
-          {common.address_du}
-          <br />
-        </address>
-      </div>
-      <div className="flex items-center gap-4">
-        <Mail />
-        <Text font="semi" className="font-Lato">
-          info@m1group-mr.com
-        </Text>
-      </div>
+      }
+      {
+        <div className="flex items-start flex-col mt-4">
+          {data?.address.map((address, index) => (
+            <div key={index} className="flex group items-center gap-4">
+              <Link
+                target="_blank"
+                href={
+                  address ||
+                  "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
+                }
+              >
+                <Location className="group-hover:fill-primary-100" />
+              </Link>
+              <address className="font-Lato font-semibold text-sm group-hover:text-primary-100 hover:underline">
+                <Link
+                  target="_blank"
+                  href={
+                    address ||
+                    "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
+                  }
+                >
+                  {common.address_eg}
+                </Link>
+                <br />
+              </address>
+            </div>
+          ))}
+        </div>
+      }
     </div>
   );
 };
 
-const SocialIcons = async ({ lang }: { lang: "en" | "ar" }) => {
+const SocialIcons = async ({
+  lang,
+  data,
+}: {
+  lang: "en" | "ar";
+  data: Contact | null;
+}) => {
   const { common } = await getDictionary(lang);
 
   return (
@@ -146,35 +179,40 @@ const SocialIcons = async ({ lang }: { lang: "en" | "ar" }) => {
 
       <div className="flex items-center gap-5">
         <Link
-          href="https://www.facebook.com/MRizkEgy1"
+          href={data?.fb || "https://www.facebook.com/MRizkEgy1"}
           className="duration-300 hover:scale-125"
           target="_blank"
         >
           <Facebook />
         </Link>
         <Link
-          href="https://www.instagram.com/mohamed.rezkbdah/"
+          href={data?.insta || "https://www.instagram.com/mohamed.rezkbdah/"}
           className="duration-300 hover:scale-125"
           target="_blank"
         >
           <Instagram />
         </Link>
         <Link
-          href="http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+          href={
+            data?.linked ||
+            "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+          }
           target="_blank"
           className="duration-300 hover:scale-125"
         >
           <Linkedin />
         </Link>
         <Link
-          href="https://twitter.com/M1_GROUP"
+          href={data?.tw || "https://twitter.com/M1_GROUP"}
           target="_blank"
           className="duration-300 hover:scale-125"
         >
           <Twitter />
         </Link>
         <Link
-          href="http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+          href={
+            data?.snap || "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
+          }
           target="_blank"
           className="duration-300 hover:scale-125"
         >
@@ -211,7 +249,7 @@ const NewsLetter = async ({ lang }: { lang: "en" | "ar" }) => {
 
 export default async function Footer({ lang }: { lang: "en" | "ar" }) {
   const { common } = await getDictionary(lang);
-
+  const data = await getContactsData();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -232,12 +270,12 @@ export default async function Footer({ lang }: { lang: "en" | "ar" }) {
 
         {/* -------- col 3 ------- */}
         <div className="md:col-span-2">
-          <Contacts lang={lang} />
+          <Contacts data={data} lang={lang} />
         </div>
 
         {/* -------- col 4 ------- */}
         <div className="md:col-span-2">
-          <SocialIcons lang={lang} />
+          <SocialIcons data={data} lang={lang} />
         </div>
 
         {/* -------- col 5 ------- */}

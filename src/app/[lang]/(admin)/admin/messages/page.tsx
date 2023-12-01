@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { deleteAction, getContactData } from "./api-calls";
+import { deleteAction, getMessagesData } from "./api-calls";
 import { Button } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
 import Link from "next/link";
@@ -16,7 +16,7 @@ async function Page({
   };
 }) {
   const { common } = await getDictionary(lang);
-  const data = await getContactData();
+  const data = await getMessagesData();
 
   return (
     <div>

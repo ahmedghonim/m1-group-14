@@ -3,13 +3,16 @@ import AddressIcon from "@svg/address.svg";
 
 import Link from "next/link";
 import { getDictionary } from "@/dictionary";
+import { Contact } from "@prisma/client";
 
 async function Address({
   children,
   lang,
+  data,
 }: {
   children: React.ReactNode;
   lang: "en" | "ar";
+  data: Contact | null;
 }) {
   const { common } = await getDictionary(lang);
   return (
@@ -20,15 +23,23 @@ async function Address({
       <div className="flex flex-col">
         {children}
         <address>
-          <span className="text-white lg:text-[20px] sm:text-[12px] text-[18px] font-bold">
-            <Link
-              target="_blank"
-              href="https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
-              className="hover:underline"
-            >
-              - {common.address_eg}
-            </Link>
-            <br />- {common.address_du}
+          <span className="text-white lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
+            -{" "}
+            {
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: data?.address[0] || common.address,
+                }}
+              ></span>
+            }
+          </span>
+          <span className="text-white lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
+            -{" "}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: data?.address[1] || common.address,
+              }}
+            ></span>
           </span>
         </address>
       </div>

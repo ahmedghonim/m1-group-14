@@ -29,9 +29,9 @@ function VerticalBar({ setOpenMenu, navBar, className, common }: Props) {
         className
       )}
     >
-      <div className="flex justify-center mt-14">
+      <Link href="/" className="flex justify-center mt-14">
         <TextLogo />
-      </div>
+      </Link>
       <div className="mt-14 mx-9 flex flex-col gap-6">
         {navBar.map(({ link, name, icon: Icon }) => (
           <Link key={link} href={link}>
@@ -47,7 +47,7 @@ function VerticalBar({ setOpenMenu, navBar, className, common }: Props) {
               )}
             >
               {Icon}
-              {common[name]}
+              {name}
             </span>
           </Link>
         ))}
