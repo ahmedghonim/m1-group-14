@@ -15,6 +15,7 @@ const upsertAction = async (formData: FormData) => {
     if (image instanceof File && image.size !== 0) {
       const { url } = await put(image.name, image, {
         access: "public",
+        token: "vercel_blob_rw_OBYfhkJQE6LLgeTe_tSgcL7V2GiNEIf7EsvIWwVygZdfVO2",
       });
       imageUrl = url;
     }
