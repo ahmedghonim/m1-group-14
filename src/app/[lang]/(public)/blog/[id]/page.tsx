@@ -50,6 +50,30 @@ async function Page({
               dangerouslySetInnerHTML={{ __html: data?.description[lang] }}
             ></p>
           </div>
+          {/* attchment */}
+          {data?.attachment && (
+            <div className="flex flex-col gap-3 mt-7">
+              <h1 className="text-brand-primary mb-3 mt-2 text-3xl font-semibold tracking-tight lg:text-4xl lg:leading-snug">
+                {common.attachment}
+              </h1>
+              <div className="flex gap-3">
+                <div className="flex gap-3">
+                  <div>
+                    <Link
+                      href={
+                        data?.attachment.startsWith("http")
+                          ? data?.attachment
+                          : `http://${data?.attachment}`
+                      }
+                      className="text-blue-600 "
+                    >
+                      {data?.attachment}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div className="mb-7 mt-7 flex ">
             <Link
               className="bg-brand-secondary/20 rounded-full px-5 py-2 text-sm text-blue-600 dark:text-blue-500 "
