@@ -11,9 +11,11 @@ const Paragraph = dynamic(() => import("./Paragraph"), { ssr: false });
 export default async function AboutUS({
   lang,
   data,
+  aboutPage,
 }: {
   lang: "en" | "ar";
   data: AboutTypes;
+  aboutPage?: boolean;
 }) {
   const { common } = await getDictionary(lang);
 
@@ -28,17 +30,31 @@ export default async function AboutUS({
       </Text>
       <div className="flex justify-between items-center flex-col lg:flex-row  gap-5 md:gap-0">
         <div className="lg:w-[60%] order-2 lg:order-1">
-          <div className="mb-3 flex flex-col gap-2">
-            {data?.description[lang] && (
-              <Paragraph description={data?.description[lang]} />
-            )}
-          </div>
-          <Link
-            href="/about-us"
-            className="bg-dark-100 !text-[16px] py-3 px-5 rounded text-white hover:opacity-60 duration-200"
-          >
-            {common.read_more}
-          </Link>
+          {!aboutPage && (
+            <div className="mb-3 flex flex-col gap-2">
+              {data?.description[lang] && (
+                <Paragraph description={data?.description[lang]} />
+              )}
+            </div>
+          )}
+          {aboutPage && (
+            <Text
+              as="p"
+              className="!text-start leading-8 font-Lato !text-[16px] lg:!text-[21px] "
+            >
+              <span
+                dangerouslySetInnerHTML={{ __html: data?.description[lang] }}
+              ></span>
+            </Text>
+          )}
+          {!aboutPage && (
+            <Link
+              href="/about-us"
+              className="bg-dark-100 !text-[16px] py-3 px-5 rounded text-white hover:opacity-60 duration-200"
+            >
+              {common.read_more}
+            </Link>
+          )}
         </div>
 
         <div className="w-full lg:w-fit order-1 lg:order-2 flex justify-center">
