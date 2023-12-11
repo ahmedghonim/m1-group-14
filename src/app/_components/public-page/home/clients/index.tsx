@@ -12,8 +12,19 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import Image from "next/image";
 import { Text } from "@/app/_ui";
+import { quite } from "@prisma/client";
 
-export default function Clients({ data, common }: { data: any; common: any }) {
+export default function Clients({
+  data,
+  common,
+  quiteData,
+  lang,
+}: {
+  data: any;
+  common: any;
+  quiteData: any;
+  lang: any;
+}) {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
@@ -69,7 +80,7 @@ export default function Clients({ data, common }: { data: any; common: any }) {
         </button>
       </div>
       <Text as="p" font="bold" className="mt-8 !text-[20px]">
-        {common.client_sub_word}
+        {quiteData.quite[lang]}
       </Text>
     </div>
   );

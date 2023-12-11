@@ -137,9 +137,13 @@
     "attachment": "Attachment",
     "date": "Date",
     "author": "Author",
-    "view_all_blogs": "View All Blogs"
+    "view_all_blogs": "View All Blogs",
+    "quite": "Quite",
+    "en_quite": "English Quite",
+    "ar_quite": "Arabic Quite"
   },
   "pages-title": {
+    "quite": "Quite",
     "admin": "About Us",
     "our-industries": "Our Industries",
     "our-client": "Our Client",

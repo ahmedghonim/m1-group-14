@@ -63,6 +63,11 @@ export default async function DashboardLayout({
       icon: <OurClient className="fill-current" />,
     },
     {
+      name: "quite",
+      link: `/${lang}/admin/quite`,
+      icon: <OurClient className="fill-current" />,
+    },
+    {
       name: "fqa",
       link: `/${lang}/admin/our-fqa`,
       icon: <Faq className="fill-current" />,

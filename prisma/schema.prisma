@@ -85,3 +85,8 @@ model Messages {
   subject    String
   message    String
 }
+
+model quite{
+  id         Int    @id @default(autoincrement())
+  quite      Json
+}

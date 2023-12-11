@@ -9,11 +9,12 @@ import { getDictionary } from "@/dictionary";
 import { getHeroData } from "../(admin)/admin/api-calls";
 import { HeroTypes } from "../(admin)/admin/page";
 import { getInoNumbersData } from "../(admin)/admin/our-industries/api-calls";
-import { NumbersInfo } from "@prisma/client";
+import { NumbersInfo, quite } from "@prisma/client";
 import { getAboutData } from "../(admin)/admin/about-us/api-calls";
 import { AboutTypes } from "../(admin)/admin/about-us/page";
 import { getServiceData } from "../(admin)/admin/our-services/api-calls";
 import { getClientData } from "../(admin)/admin/our-client/api-calls";
+import { getQuiteData } from "../(admin)/admin/quite/api-calls";
 
 export default async function Home({
   params: { lang },
@@ -26,6 +27,7 @@ export default async function Home({
   const aboutData = (await getAboutData()) as AboutTypes;
   const ServiceData = await getServiceData();
   const clientData = await getClientData();
+  const quiteData = (await getQuiteData()) as quite;
   return (
     <div>
       <section className="w-full">
@@ -47,7 +49,12 @@ export default async function Home({
             </Link>
           </div>
         </Services>
-        <Clients common={common} data={clientData} />
+        <Clients
+          common={common}
+          data={clientData}
+          quiteData={quiteData}
+          lang={lang}
+        />
       </section>
     </div>
   );
