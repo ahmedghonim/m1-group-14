@@ -98,31 +98,37 @@ const Contacts = async ({
         {common.contacts}
       </Text>
       <div className="flex items-start gap-4 flex-col">
-        {data?.phone.map((phone, index) => (
-          <div key={index} className="flex gap-4">
-            <Phone />
-            <Link
-              href={"tell:" + phone}
-              className="font-Lato text-dark-100 text-center gap-3 font-semibold "
-            >
-              {phone}
-            </Link>
-          </div>
-        ))}
+        {data?.phone.map(
+          (phone, index) =>
+            phone && (
+              <div key={index} className="flex gap-4">
+                <Phone />
+                <Link
+                  href={"tell:" + phone}
+                  className="font-Lato text-dark-100 text-center gap-3 font-semibold "
+                >
+                  {phone}
+                </Link>
+              </div>
+            )
+        )}
       </div>
       {
         <div className="flex items-start gap-4 flex-col mt-4">
-          {data?.email.map((email, index) => (
-            <div key={index} className="flex gap-4">
-              <Mail />
-              <Link
-                href={`mailto:${email}`}
-                className="font-Lato text-dark-100 text-center gap-3 font-semibold "
-              >
-                {email}
-              </Link>
-            </div>
-          ))}
+          {data?.email.map(
+            (email, index) =>
+              email && (
+                <div key={index} className="flex gap-4">
+                  <Mail />
+                  <Link
+                    href={`mailto:${email}`}
+                    className="font-Lato text-dark-100 text-center gap-3 font-semibold "
+                  >
+                    {email}
+                  </Link>
+                </div>
+              )
+          )}
         </div>
       }
       {
@@ -146,7 +152,11 @@ const Contacts = async ({
                     "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
                   }
                 >
-                  {address}
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: address,
+                    }}
+                  />
                 </Link>
                 <br />
               </address>
