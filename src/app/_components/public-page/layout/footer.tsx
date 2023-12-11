@@ -146,7 +146,7 @@ const Contacts = async ({
                     "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
                   }
                 >
-                  {common.address_eg}
+                  {address}
                 </Link>
                 <br />
               </address>
