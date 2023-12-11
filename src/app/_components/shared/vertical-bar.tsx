@@ -47,7 +47,7 @@ function VerticalBar({ setOpenMenu, navBar, className, common }: Props) {
               )}
             >
               {Icon}
-              {name}
+              {common[name]}
             </span>
           </Link>
         ))}
