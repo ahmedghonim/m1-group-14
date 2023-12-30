@@ -39,9 +39,9 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
 
   return (
     <nav className="flex justify-between lg:my-[35px] lg:mx-[120px] mx-7 my-7 items-center relative z-[6]">
-      <div className="flex flex-col justify-start items-center gap-2">
+      <Link href="/" className="flex flex-col justify-start items-center gap-2">
         <TextLogo />
-      </div>
+      </Link>
 
       {/* ------ Hidden In Mobile ----- */}
       <div className="lg:flex gap-8 xl:gap-14 hidden">

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { useFormStatus } from "react-dom";
 
 interface Props {
   name?: string;
@@ -9,7 +8,6 @@ interface Props {
 }
 
 function UploadImage({ value }: Props) {
-  const { data } = useFormStatus();
   return (
     <div className="pb-4 h-full w-full">
       <div className="h-full w-full border-2  border-dashed rounded-md border-primary-100 relative">
@@ -18,7 +16,7 @@ function UploadImage({ value }: Props) {
           alt="image"
           className="w-full h-full"
           width={300}
-          height={400}
+          height={500}
         />
       </div>
     </div>

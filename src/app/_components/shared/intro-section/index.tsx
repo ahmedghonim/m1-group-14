@@ -12,8 +12,8 @@ export default function IntroSection({ children, image }: Props) {
       <Image
         src={image}
         alt=""
-        width={1000}
-        height={1000}
+        width={2000}
+        height={2000}
         className="w-full !h-full"
       />
       {children}

@@ -9,20 +9,24 @@ datasource db {
 }
 
 model About {
-  id          Int    @id @default(autoincrement())
+  id          Int  @id @default(autoincrement())
   title       Json
   description Json
 }
 
 model Blog {
-  id          Int    @id @default(autoincrement())
-  title       Json
-  description Json
-  image       String
-  date        String
-  author      String
-  category    String
-  attachment  String
+  id           Int    @id @default(autoincrement())
+  title        Json
+  description  Json
+  image        String
+  date         String
+  author       String
+  category     String
+  attachment_0 String
+  attachment_1 String
+  attachment_2 String
+  attachment_3 String
+  attachment_4 String
 }
 
 model Contact {
@@ -86,7 +90,7 @@ model Messages {
   message    String
 }
 
-model quite{
-  id         Int    @id @default(autoincrement())
-  quite      Json
+model quite {
+  id    Int  @id @default(autoincrement())
+  quite Json
 }

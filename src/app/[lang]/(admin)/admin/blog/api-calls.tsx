@@ -10,10 +10,42 @@ const upsertAction = async (formData: FormData) => {
 
   try {
     let imageUrl = "";
+    let attachment_0 = "";
+    let attachment_1 = "";
+    let attachment_2 = "";
+    let attachment_3 = "";
+    let attachment_4 = "";
 
-    if (typeof image !== "string") {
-      const { url } = await uploadFile(image);
+    if ((image as any).size !== 0) {
+      const { url } = await uploadFile(image as any);
       imageUrl = url;
+    }
+
+    if ((value["attachment_0"] as File).size !== 0) {
+      const { url } = await uploadFile(value["attachment_0"] as File);
+
+      attachment_0 = url;
+    }
+
+    if ((value["attachment_1"] as File).size !== 0) {
+      const { url } = await uploadFile(value["attachment_1"] as File);
+      attachment_1 = url;
+    }
+
+    if ((value["attachment_2"] as File).size !== 0) {
+      const { url } = await uploadFile(value["attachment_2"] as File);
+      attachment_2 = url;
+    }
+
+    if ((value["attachment_3"] as File).size !== 0) {
+      const { url } = await uploadFile(value["attachment_3"] as File);
+      attachment_3 = url;
+    }
+
+    if ((value["attachment_4"] as File).size !== 0) {
+      const { url } = await uploadFile(value["attachment_4"] as File);
+
+      attachment_4 = url;
     }
 
     const values = {
@@ -29,11 +61,32 @@ const upsertAction = async (formData: FormData) => {
       date: value["date"],
       author: value["author"],
       category: value["category"],
-      attachment: value["attachment"],
+      attachment_0,
+      attachment_1,
+      attachment_2,
+      attachment_3,
+      attachment_4,
     } as any;
+
     if (imageUrl === "") {
       delete values.image;
     }
+    if (attachment_0 === "") {
+      delete values.attachment_0;
+    }
+    if (attachment_1 === "") {
+      delete values.attachment_1;
+    }
+    if (attachment_2 === "") {
+      delete values.attachment_2;
+    }
+    if (attachment_3 === "") {
+      delete values.attachment_3;
+    }
+    if (attachment_4 === "") {
+      delete values.attachment_4;
+    }
+
     if (+id !== 0) {
       await prisma.blog.update({
         where: {
@@ -48,10 +101,27 @@ const upsertAction = async (formData: FormData) => {
         },
       });
     }
-    revalidatePath("/[lang]/admin/blog", "page");
-    redirect("/ar/admin/blog");
+    // revalidatePath("/[lang]/admin/blog", "page");
+    // redirect("/ar/admin/blog");
   } catch (error) {
-    redirect("/ar/admin/blog");
+    console.log("error >>>> ", error);
+  }
+};
+const deleteImage = async (formData: FormData) => {
+  const object = Object.fromEntries(formData);
+  const { num, id } = object;
+
+  try {
+    await prisma.blog.update({
+      where: {
+        id: +id,
+      },
+      data: {
+        [`attachment_${num}`]: "",
+      },
+    });
+  } catch (error) {
+    console.log("error >>>> ", error);
   }
 };
 
@@ -64,10 +134,10 @@ async function deleteAction(formData: FormData) {
         id: +id,
       },
     });
-    revalidatePath("/[lang]/admin/our-blogs", "page");
-    redirect("/admin/our-blogs");
+    revalidatePath("/[lang]/admin/blog", "page");
+    redirect("/admin/blog");
   } catch (error) {
-    redirect("/admin/our-blogs");
+    redirect("/admin/blog");
   }
 }
 
@@ -80,4 +150,4 @@ const getBlogById = async (id: number) =>
     },
   });
 
-export { upsertAction, deleteAction, getBlogData, getBlogById };
+export { upsertAction, deleteAction, getBlogData, getBlogById, deleteImage };

@@ -1,9 +1,7 @@
-import * as yup from "yup";
 import { getBlogData } from "./api-calls";
 import { Button } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
 import Link from "next/link";
-import ServesView from "@/app/_components/public-page/our-serves";
 import BlogCard from "@/app/_components/shared/blog-card";
 import { Blog } from "@prisma/client";
 
@@ -18,7 +16,6 @@ async function Page({
 }) {
   const { common } = await getDictionary(lang);
   const data = await getBlogData();
-
   return (
     <div>
       <Button style="primary">

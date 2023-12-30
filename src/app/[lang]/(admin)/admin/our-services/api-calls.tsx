@@ -1,7 +1,6 @@
 "use server";
 import prisma from "@/db_prisma/db";
 import uploadFile from "@/db_prisma/uploadFile";
-import { put } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -11,11 +10,8 @@ const upsertAction = async (formData: FormData) => {
 
   try {
     let imageUrl = "";
-
-    if (typeof image !== "string") {
-      const { url } = await put(image.name, image, {
-        access: "public",
-      });
+    if ((image as any).size !== 0) {
+      const { url } = await uploadFile(image as File);
       imageUrl = url;
     }
 

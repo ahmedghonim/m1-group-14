@@ -18,7 +18,7 @@ async function Page({
   return (
     <div>
       <form action={upsertAction} className="grid grid-cols-12">
-        <div className="col-span-12 h-[450px]">
+        <div className="col-span-12 h-[650px]">
           <input type="file" name="image" />
           <UploadImage name="image" value={data?.image} />
         </div>

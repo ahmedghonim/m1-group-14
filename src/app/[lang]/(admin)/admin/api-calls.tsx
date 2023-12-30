@@ -10,9 +10,8 @@ const upsertAction = async (formData: FormData) => {
 
   try {
     let imageUrl = "";
-
-    if (typeof image !== "string") {
-      const { url } = await uploadFile(image);
+    if ((image as any).size !== 0) {
+      const { url } = await uploadFile(image as File);
       imageUrl = url;
     }
 
