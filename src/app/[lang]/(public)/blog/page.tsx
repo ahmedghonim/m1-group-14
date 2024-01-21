@@ -1,20 +1,20 @@
-import Head from "next/head";
-import React from "react";
-import { getDictionary } from "@/dictionary";
-import { LinkButton, Text } from "@/app/_ui";
-import BlogCard from "@/app/_components/shared/blog-card";
-import Link from "next/link";
-import { getBlogData } from "../../(admin)/admin/blog/api-calls";
-import { getQuiteData } from "../../(admin)/admin/quite/api-calls";
+import Head from "next/head"
+import React from "react"
+import { getDictionary } from "@/dictionary"
+import { LinkButton, Text } from "@/app/_ui"
+import BlogCard from "@/app/_components/shared/blog-card"
+import Link from "next/link"
+import { getBlogData } from "../../(admin)/admin/blog/api-calls"
+import { getQuiteData } from "../../(admin)/admin/quite/api-calls"
 
 async function OurBlog({
   params: { lang },
 }: {
-  params: { lang: "en" | "ar" };
+  params: { lang: "en" | "ar" }
 }) {
-  const { common } = await getDictionary(lang);
-  const data = await getBlogData();
-  const quiteData = (await getQuiteData()) as any;
+  const { common } = await getDictionary(lang)
+  const data = await getBlogData()
+  const quiteData = (await getQuiteData()) as any
   return (
     <>
       <Head>
@@ -53,7 +53,7 @@ async function OurBlog({
         </div>
         <div className="rounded-3xl bg-[#F2E4BF] h-[282px] flex flex-col justify-center items-center gap-7 px-2">
           <Text as="p" size="md" font="bold" className="text-black md:w-3/5 ">
-            {quiteData.quite[lang]}
+            {quiteData?.quite[lang]}
           </Text>
           <LinkButton lang={lang} href="/contact-us" rounded="full">
             {common.contact}
@@ -61,7 +61,7 @@ async function OurBlog({
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default OurBlog;
+export default OurBlog

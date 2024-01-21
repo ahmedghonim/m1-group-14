@@ -1,21 +1,21 @@
-import Head from "next/head";
-import React from "react";
-import ServicesCover from "@image/services-cover.png";
-import { getDictionary } from "@/dictionary";
-import IntroSection from "@/app/_components/shared/intro-section";
-import { LinkButton, Text } from "@/app/_ui";
-import ServesView from "@/app/_components/public-page/our-serves";
-import { getServiceData } from "../../(admin)/admin/our-services/api-calls";
-import { getQuiteData } from "../../(admin)/admin/quite/api-calls";
+import Head from "next/head"
+import React from "react"
+import ServicesCover from "@image/services-cover.png"
+import { getDictionary } from "@/dictionary"
+import IntroSection from "@/app/_components/shared/intro-section"
+import { LinkButton, Text } from "@/app/_ui"
+import ServesView from "@/app/_components/public-page/our-serves"
+import { getServiceData } from "../../(admin)/admin/our-services/api-calls"
+import { getQuiteData } from "../../(admin)/admin/quite/api-calls"
 
 async function OurService({
   params: { lang },
 }: {
-  params: { lang: "en" | "ar" };
+  params: { lang: "en" | "ar" }
 }) {
-  const { common } = await getDictionary(lang);
-  const data = await getServiceData();
-  const quiteData = (await getQuiteData()) as any;
+  const { common } = await getDictionary(lang)
+  const data = await getServiceData()
+  const quiteData = (await getQuiteData()) as any
   return (
     <>
       <Head>
@@ -55,7 +55,7 @@ async function OurService({
         )}
         <div className="rounded-3xl bg-[#F2E4BF] h-[282px] flex flex-col justify-center items-center gap-7 px-2">
           <Text as="p" size="md" font="bold" className="text-black md:w-3/5 ">
-            {quiteData.quite[lang]}
+            {quiteData?.quite[lang]}
           </Text>
           <LinkButton lang={lang} href="/contact-us" rounded="full">
             {common.contact}
@@ -63,7 +63,7 @@ async function OurService({
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default OurService;
+export default OurService
