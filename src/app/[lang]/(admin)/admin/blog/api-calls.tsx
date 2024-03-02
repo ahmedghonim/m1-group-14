@@ -102,9 +102,9 @@ const upsertAction = async (formData: FormData) => {
       });
     }
     revalidatePath("/[lang]/admin/blog", "page");
-    redirect("/admin/blog");
+    redirect("/ar/admin/blog");
   } catch (error) {
-    redirect("/admin/blog");
+    redirect("/ar/admin/blog");
   }
 };
 const deleteImage = async (formData: FormData) => {
@@ -135,9 +135,9 @@ async function deleteAction(formData: FormData) {
       },
     });
     revalidatePath("/[lang]/admin/blog", "page");
-    redirect("/admin/blog");
+    redirect("/ar/admin/blog");
   } catch (error) {
-    redirect("/admin/blog");
+    redirect("/ar/admin/blog");
   }
 }
 
