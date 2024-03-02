@@ -13,7 +13,7 @@ export function SliderThumb({ images }: Props) {
 
   return (
     <div className="flex max-w-full gap-2">
-      <div className=" hidden h-[600px] flex-col gap-2 sm:flex overflow-hidden">
+      <div className=" hidden w-[250px] h-[600px] flex-col gap-2 sm:flex overflow-auto">
         {images.map((image, index) =>
           image ? (
             <div

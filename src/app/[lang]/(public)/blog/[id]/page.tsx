@@ -1,7 +1,6 @@
 import { getBlogById } from "@/app/[lang]/(admin)/admin/blog/api-calls";
 import { SliderThumb } from "@/app/_components/shared/slider-thumb";
 import { getDictionary } from "@/dictionary";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 

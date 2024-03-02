@@ -4,8 +4,8 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model About {
@@ -15,18 +15,23 @@ model About {
 }
 
 model Blog {
-  id           Int    @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
   title        Json
   description  Json
   image        String
   date         String
   author       String
   category     String
-  attachment_0 String
-  attachment_1 String
-  attachment_2 String
-  attachment_3 String
-  attachment_4 String
+  attachment_0 String?
+  attachment_1 String?
+  attachment_2 String?
+  attachment_3 String?
+  attachment_4 String?
+}
+
+model Client {
+  id    Int    @id @default(autoincrement())
+  image String
 }
 
 model Contact {
@@ -41,43 +46,17 @@ model Contact {
   snap    String
 }
 
-model Hero {
-  id       Int    @id @default(autoincrement())
-  title    Json
-  subtitle Json
-  image    String
-}
-
-model NumbersInfo {
-  id          Int @id @default(autoincrement())
-  service     Int
-  customer    Int
-  takeService Int
-}
-
 model Fqa {
   id       Int  @id @default(autoincrement())
   question Json
   answer   Json
 }
 
-model Service {
-  id          Int    @id @default(autoincrement())
-  image       String
-  title       Json
-  description Json
-  favoriteNum Int?   @unique
-}
-
-model Client {
-  id    Int    @id @default(autoincrement())
-  image String
-}
-
-model User {
+model Hero {
   id       Int    @id @default(autoincrement())
-  name     String
-  password String
+  title    Json
+  subtitle Json
+  image    String
 }
 
 model Messages {
@@ -88,6 +67,33 @@ model Messages {
   email      String
   subject    String
   message    String
+}
+
+model NumbersInfo {
+  id          Int @id @default(autoincrement())
+  service     Int
+  customer    Int
+  takeService Int
+}
+
+model Service {
+  id          Int    @id @default(autoincrement())
+  image       String
+  title       String
+  description String
+  favoriteNum Int?   @unique
+}
+
+model ServiceNumber {
+  id        Int @id @default(autoincrement())
+  number    Int @unique
+  serviceId Int
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  password String
 }
 
 model quite {

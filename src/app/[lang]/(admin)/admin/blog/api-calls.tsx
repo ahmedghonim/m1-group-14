@@ -101,10 +101,10 @@ const upsertAction = async (formData: FormData) => {
         },
       });
     }
-    // revalidatePath("/[lang]/admin/blog", "page");
-    // redirect("/ar/admin/blog");
+    revalidatePath("/[lang]/admin/blog", "page");
+    redirect("/admin/blog");
   } catch (error) {
-    console.log("error >>>> ", error);
+    redirect("/admin/blog");
   }
 };
 const deleteImage = async (formData: FormData) => {

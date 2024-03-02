@@ -33,8 +33,8 @@ async function Page({
         attachment_4: "",
         id: null,
       };
-  console.log("data >>>> ", data);
   const { common } = await getDictionary(lang);
+
   return (
     <div>
       {isUpdate && (
@@ -98,7 +98,7 @@ async function Page({
           <input type="file" name="image" />
           <UploadImage name="image" value={data?.image} />
         </div>
-        <div className="flex col-span-12 h-[250px] gap-10 mt-10 me-20">
+        <div className="grid-cols-3 grid  col-span-12  gap-10 mt-10 me-20">
           <div>
             <label htmlFor="">
               {common.image} {common.number} 1
@@ -106,6 +106,7 @@ async function Page({
             <input type="file" name="attachment_0" />
             <UploadImage name="attachment[0]" value={data?.attachment_0} />
           </div>
+
           <div>
             <label htmlFor="">
               {common.image} {common.number} 2

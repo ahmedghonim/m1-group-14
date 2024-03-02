@@ -1,9 +1,7 @@
-import * as yup from "yup";
-import { deleteAction, getServiceData } from "./api-calls";
+import { getServiceData } from "./api-calls";
 import { Button } from "@/app/_ui";
 import { getDictionary } from "@/dictionary";
 import Link from "next/link";
-import { Service } from "@prisma/client";
 import ServesView from "@/app/_components/public-page/our-serves";
 
 export type HeroTypes = any;

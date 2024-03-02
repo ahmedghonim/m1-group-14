@@ -35,6 +35,7 @@ async function Page({
           />
           <Input
             name="password"
+            type="password"
             label="Password"
             className="bg-white p-2"
             labelStyle="text-white"
