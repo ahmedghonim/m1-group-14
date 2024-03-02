@@ -49,6 +49,42 @@ const upsertAction = async (formData: FormData) => {
     redirect("/ar/admin/our-services");
   }
 };
+const updateFavorite = async (formData: FormData) => {
+  const object = Object.fromEntries(formData);
+  const { favoriteNum, id } = object;
+
+  const oldService = await prisma.service.findMany({
+    where: {
+      favoriteNum: +favoriteNum,
+    },
+  });
+
+  try {
+    if (oldService.length > 0) {
+      await prisma.service.update({
+        where: {
+          id: oldService[0].id,
+        },
+        data: {
+          favoriteNum: null,
+        },
+      });
+    }
+
+    await prisma.service.update({
+      where: {
+        id: +id,
+      },
+      data: {
+        favoriteNum: +favoriteNum,
+      },
+    });
+
+    revalidatePath("/admin/service-us", "page");
+  } catch (error) {
+    console.log("error >>>> ", error);
+  }
+};
 
 async function deleteAction(formData: FormData) {
   const object = Object.fromEntries(formData);
@@ -66,7 +102,12 @@ async function deleteAction(formData: FormData) {
   }
 }
 
-const getServiceData = async () => prisma.service.findMany();
+const getServiceData = async () =>
+  prisma.service.findMany({
+    orderBy: {
+      favoriteNum: "asc", // 'asc' for ascending order
+    },
+  });
 
 const getServiceById = async (id: number) =>
   prisma.service.findUnique({
@@ -75,4 +116,10 @@ const getServiceById = async (id: number) =>
     },
   });
 
-export { upsertAction, deleteAction, getServiceData, getServiceById };
+export {
+  upsertAction,
+  deleteAction,
+  getServiceData,
+  getServiceById,
+  updateFavorite,
+};

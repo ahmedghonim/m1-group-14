@@ -6,7 +6,6 @@ const upsertAction = async (formData: FormData) => {
   const object = Object.fromEntries(formData);
   const { ...value } = object;
   const data = await getContactsData();
-  console.log('value["phone"] >>>> ', value);
   try {
     const values = {
       phone: [value["phone[0]"], value["phone[1]"]],

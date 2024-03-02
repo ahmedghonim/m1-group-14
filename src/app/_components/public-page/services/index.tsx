@@ -27,7 +27,7 @@ const ServicesCard = ({ image, title, lang }: ServicesCardProps) => {
           as="h3"
           className="font-Lato !text-[28px] !text-white"
         >
-          {title[lang as any]}
+          {JSON.parse(title)[lang as any]}
         </Text>
       </div>
     </div>

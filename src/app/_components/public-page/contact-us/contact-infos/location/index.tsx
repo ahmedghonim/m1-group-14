@@ -23,7 +23,7 @@ async function Address({
       <div className="flex flex-col">
         {children}
         <address>
-          <span className="text-white lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
+          <span className="lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
             -{" "}
             {
               <span
@@ -33,7 +33,7 @@ async function Address({
               ></span>
             }
           </span>
-          <span className="text-white lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
+          <span className="lg:text-[20px] sm:text-[12px] text-[18px] font-bold flex">
             -{" "}
             <span
               dangerouslySetInnerHTML={{

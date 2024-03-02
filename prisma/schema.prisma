@@ -84,12 +84,6 @@ model Service {
   favoriteNum Int?   @unique
 }
 
-model ServiceNumber {
-  id        Int @id @default(autoincrement())
-  number    Int @unique
-  serviceId Int
-}
-
 model User {
   id       Int    @id @default(autoincrement())
   name     String
