@@ -96,9 +96,9 @@ async function deleteAction(formData: FormData) {
       },
     });
     revalidatePath("/[lang]/admin/our-services", "page");
-    redirect("/admin/our-services");
+    redirect("/ar/admin/our-services");
   } catch (error) {
-    redirect("/admin/our-services");
+    redirect("/ar/admin/our-services");
   }
 }
 
