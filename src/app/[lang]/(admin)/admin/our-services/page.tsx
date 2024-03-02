@@ -33,8 +33,8 @@ async function Page({
               <Link href={`/${lang}/admin/our-services/${id}`}>
                 <ServesView
                   src={image}
-                  desc={description[lang]}
-                  title={title[lang]}
+                  desc={JSON.parse(description)[lang]}
+                  title={JSON.parse(title)[lang]}
                 />
               </Link>
             </div>

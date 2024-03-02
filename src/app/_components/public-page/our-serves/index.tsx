@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -9,7 +10,7 @@ export interface ServesViewProps {
   revers?: boolean;
 }
 
-async function ServesView({ revers, src, title, desc }: ServesViewProps) {
+function ServesView({ revers, src, title, desc }: ServesViewProps) {
   return (
     <div
       className={clsx("flex gap-9 md:flex-row flex-col", {
