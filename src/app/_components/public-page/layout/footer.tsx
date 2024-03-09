@@ -87,7 +87,7 @@ const Contacts = async ({
   data: Contact | null;
 }) => {
   const { common } = await getDictionary(lang);
-
+  const link = "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb";
   return (
     <div>
       <Text
@@ -113,57 +113,37 @@ const Contacts = async ({
             )
         )}
       </div>
-      {
-        <div className="flex items-start gap-4 flex-col mt-4">
-          {data?.email.map(
-            (email, index) =>
-              email && (
-                <div key={index} className="flex gap-4">
-                  <Mail />
-                  <Link
-                    href={`mailto:${email}`}
-                    className="font-Lato text-dark-100 text-center gap-3 font-semibold "
-                  >
-                    {email}
-                  </Link>
-                </div>
-              )
-          )}
-        </div>
-      }
-      {
-        <div className="flex items-start flex-col mt-4">
-          {data?.address.map((address, index) => (
-            <div key={index} className="flex group items-center gap-4">
-              <Link
-                target="_blank"
-                href={
-                  address ||
-                  "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
-                }
-              >
-                <Location className="group-hover:fill-primary-100" />
-              </Link>
-              <address className="font-Lato font-semibold text-sm group-hover:text-primary-100 hover:underline">
+
+      <div className="flex items-start gap-4 flex-col mt-4">
+        {data?.email.map(
+          (email, index) =>
+            email && (
+              <div key={index} className="flex gap-4">
+                <Mail />
                 <Link
-                  target="_blank"
-                  href={
-                    address ||
-                    "https://maps.app.goo.gl/SvRVmCnG3cD52rHWA?g_st=iwb"
-                  }
+                  href={`mailto:${email}`}
+                  className="font-Lato text-dark-100 text-center gap-3 font-semibold "
                 >
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: address,
-                    }}
-                  />
+                  {email}
                 </Link>
-                <br />
-              </address>
-            </div>
-          ))}
-        </div>
-      }
+              </div>
+            )
+        )}
+      </div>
+
+      <div className="flex items-start flex-col mt-4">
+        {data?.address.map((address, index) => (
+          <form key={address} className="flex group items-center gap-4">
+            <span>
+              <Location className="group-hover:fill-primary-100" />
+            </span>
+            <Link
+              href={link}
+              dangerouslySetInnerHTML={{ __html: address }}
+            ></Link>
+          </form>
+        ))}
+      </div>
     </div>
   );
 };
