@@ -1,12 +1,13 @@
 import { getDictionary } from "@/dictionary";
 import "@styles/globals.css";
-import { Cairo } from "next/font/google";
+import { Noto_Kufi_Arabic } from "next/font/google";
 
-const cairo_font = Cairo({
-  subsets: ["latin", "arabic"],
+const cairo_font = Noto_Kufi_Arabic({
+  subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-cairo",
 });
+
 export async function generateMetadata({
   params,
 }: {
