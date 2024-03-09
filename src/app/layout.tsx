@@ -1,6 +1,12 @@
 import { getDictionary } from "@/dictionary";
 import "@styles/globals.css";
+import { Noto_Kufi_Arabic } from "next/font/google";
 
+const cairo_font = Noto_Kufi_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cairo",
+});
 export async function generateMetadata({
   params,
 }: {
@@ -103,11 +109,11 @@ export default async function RootLayout({
   };
 }) {
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html lang={params.lang} className={`${cairo_font.variable} font-Lato`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body>{children}</body>
+      <body className={`${cairo_font.variable} font-Lato`}>{children}</body>
     </html>
   );
 }
