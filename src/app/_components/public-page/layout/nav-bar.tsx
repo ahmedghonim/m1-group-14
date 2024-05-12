@@ -12,7 +12,7 @@ import ChangeLang from "../../shared/change-lang";
 import VerticalBar from "../../shared/vertical-bar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
   const asPath = usePathname();
@@ -51,7 +51,12 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
             key={link}
             href={`/${lang}/${link}`}
             onClick={() =>
-              sendGAEvent({ action: "click", category: "link", label: link })
+              sendGTMEvent({
+                action: "click",
+                category: "link",
+                label: name,
+                value: link,
+              })
             }
             className={clsx(
               "relative text-dark-200 text-lg h-fit [&:hover>.line]:w-full",

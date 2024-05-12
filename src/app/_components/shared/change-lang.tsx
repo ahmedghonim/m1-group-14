@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import LangIcon from "@svg/lang.svg";
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 function ChangeLang() {
   const asPath = usePathname();
@@ -17,7 +17,7 @@ function ChangeLang() {
           "text-opacity-50": "en",
         })}
         onClick={() =>
-          sendGAEvent({ action: "click", category: "link", label: "en" })
+          sendGTMEvent({ action: "click", category: "link", label: "en" })
         }
       >
         {"EN"}
@@ -28,7 +28,7 @@ function ChangeLang() {
           "text-opacity-50": "ar",
         })}
         onClick={() =>
-          sendGAEvent({ action: "click", category: "link", label: "ar" })
+          sendGTMEvent({ action: "click", category: "link", label: "ar" })
         }
       >
         {"AR"}

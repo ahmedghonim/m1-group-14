@@ -3,7 +3,7 @@ import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
 import { IconRender, Props, mainClassName, variants } from "./helpers";
-import { sendGAEvent } from "@next/third-parties/google";
+import { sendGTMEvent } from "@next/third-parties/google";
 interface LinkButtonProps extends Props {
   href: string;
   lang?: string;
@@ -34,7 +34,12 @@ function LinkButton({
         variants.rounded[rounded]
       )}
       onClick={() =>
-        sendGAEvent({ action: "click", category: "link", label: href })
+        sendGTMEvent({
+          action: "click",
+          category: "link",
+          label: href,
+          value: href,
+        })
       }
       type={type}
     >
