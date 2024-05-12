@@ -1,20 +1,20 @@
-import Head from "next/head"
-import React from "react"
-import { getDictionary } from "@/dictionary"
-import { LinkButton, Text } from "@/app/_ui"
-import BlogCard from "@/app/_components/shared/blog-card"
-import Link from "next/link"
-import { getBlogData } from "../../(admin)/admin/blog/api-calls"
-import { getQuiteData } from "../../(admin)/admin/quite/api-calls"
+import Head from "next/head";
+import React from "react";
+import { getDictionary } from "@/dictionary";
+import { LinkButton, Text } from "@/app/_ui";
+import BlogCard from "@/app/_components/shared/blog-card";
+import Link from "next/link";
+import { getBlogData } from "../../(admin)/admin/blog/api-calls";
+import { getQuiteData } from "../../(admin)/admin/quite/api-calls";
 
 async function OurBlog({
   params: { lang },
 }: {
-  params: { lang: "en" | "ar" }
+  params: { lang: "en" | "ar" };
 }) {
-  const { common } = await getDictionary(lang)
-  const data = await getBlogData()
-  const quiteData = (await getQuiteData()) as any
+  const { common } = await getDictionary(lang);
+  const data = await getBlogData();
+  const quiteData = (await getQuiteData()) as any;
   return (
     <>
       <Head>
@@ -45,9 +45,9 @@ async function OurBlog({
               key={index}
               className="shadow-md m-5 rounded-md hover:shadow-xl"
             >
-              <Link href={`/${lang}/blog/${item.id}`}>
+              <LinkButton href={`/blog/${item.id}`} className="!bg-transparent">
                 <BlogCard data={item} lang={lang} />
-              </Link>
+              </LinkButton>
             </div>
           ))}
         </div>
@@ -61,7 +61,7 @@ async function OurBlog({
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default OurBlog
+export default OurBlog;
