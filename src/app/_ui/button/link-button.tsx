@@ -35,9 +35,7 @@ function LinkButton({
       )}
       onClick={() =>
         sendGTMEvent({
-          action: "click",
-          category: "link",
-          label: href,
+          event: "buttonClicked",
           value: href,
         })
       }

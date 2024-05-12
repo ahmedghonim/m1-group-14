@@ -17,7 +17,10 @@ function ChangeLang() {
           "text-opacity-50": "en",
         })}
         onClick={() =>
-          sendGTMEvent({ action: "click", category: "link", label: "en" })
+          sendGTMEvent({
+            event: "buttonClicked",
+            value: "en",
+          })
         }
       >
         {"EN"}
@@ -28,7 +31,11 @@ function ChangeLang() {
           "text-opacity-50": "ar",
         })}
         onClick={() =>
-          sendGTMEvent({ action: "click", category: "link", label: "ar" })
+          sendGTMEvent({
+            event: "buttonClicked",
+
+            value: "ar",
+          })
         }
       >
         {"AR"}

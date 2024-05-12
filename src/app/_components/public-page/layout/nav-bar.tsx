@@ -52,9 +52,7 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
             href={`/${lang}/${link}`}
             onClick={() =>
               sendGTMEvent({
-                action: "click",
-                category: "link",
-                label: name,
+                event: "buttonClicked",
                 value: link,
               })
             }
