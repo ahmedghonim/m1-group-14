@@ -7,7 +7,7 @@ import AboutIcon from "@svg/about-us.svg";
 import OurServesIcon from "@svg/our-serves.svg";
 import FQAIcon from "@svg/fqa.svg";
 import LogoIcon from "@svg/logo.svg";
-import { Button } from "@/app/_ui";
+import { Button, LinkButton } from "@/app/_ui";
 import ChangeLang from "../../shared/change-lang";
 import VerticalBar from "../../shared/vertical-bar";
 import { usePathname } from "next/navigation";
@@ -67,7 +67,8 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
         ))}
       </div>
       <div className="lg:flex items-center gap-3 hidden">
-        <Button
+        <LinkButton
+          href="/contact-us"
           style="secondary"
           rounded="full"
           size="sm"
@@ -75,7 +76,7 @@ function NavBar({ common, lang }: { lang: "en" | "ar"; common: any }) {
           className="!h-fit"
         >
           {common["contact"]}
-        </Button>
+        </LinkButton>
         <ChangeLang />
       </div>
 
