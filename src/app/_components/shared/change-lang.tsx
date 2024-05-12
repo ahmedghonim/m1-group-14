@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import LangIcon from "@svg/lang.svg";
+import { sendGAEvent } from "@next/third-parties/google";
 
 function ChangeLang() {
   const asPath = usePathname();
@@ -15,6 +16,9 @@ function ChangeLang() {
         className={clsx("text-black", {
           "text-opacity-50": "en",
         })}
+        onClick={() =>
+          sendGAEvent({ action: "click", category: "link", label: "en" })
+        }
       >
         {"EN"}
       </Link>
@@ -23,6 +27,9 @@ function ChangeLang() {
         className={clsx("text-black", {
           "text-opacity-50": "ar",
         })}
+        onClick={() =>
+          sendGAEvent({ action: "click", category: "link", label: "ar" })
+        }
       >
         {"AR"}
       </Link>
