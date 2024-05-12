@@ -120,7 +120,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${cairo_font.variable} font-Lato`}>{children}</body>
-      <GoogleAnalytics gaId="G-7T7T2LJ31F" />
+      <GoogleAnalytics gaId="G-H36G0XE1N1" />
     </html>
   );
 }
