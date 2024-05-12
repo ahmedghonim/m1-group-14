@@ -1,6 +1,7 @@
 import { getDictionary } from "@/dictionary";
 import "@styles/globals.css";
 import { Noto_Kufi_Arabic } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const cairo_font = Noto_Kufi_Arabic({
   subsets: ["arabic"],
@@ -119,6 +120,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${cairo_font.variable} font-Lato`}>{children}</body>
+      <GoogleAnalytics gaId="G-7T7T2LJ31F" />
     </html>
   );
 }
