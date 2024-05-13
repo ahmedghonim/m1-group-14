@@ -1,0 +1,8 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow indexing of profile URLs for all languages
+Disallow: /*/profile/
+
+Sitemap: https://www.m1group-mr.com/sitemap.xml
