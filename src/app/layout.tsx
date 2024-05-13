@@ -117,6 +117,10 @@ export default async function RootLayout({
       // suppressHydrationWarning={false}
     >
       <head>
+        <meta
+          name="google-site-verification"
+          content="FTKKFmS7ohJ1KQZA8wSs1EavFIefk6LsbXLjfnxQNxk"
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${cairo_font.variable} font-Lato`}>{children}</body>
