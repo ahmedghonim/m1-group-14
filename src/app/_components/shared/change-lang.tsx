@@ -12,8 +12,9 @@ function ChangeLang() {
     <div className="flex items-center gap-2">
       <LangIcon />
       <Link
+        aria-label="Switch to English"
         href={`/en/${asPath.split("/")[2] || ""}`}
-        className={clsx("text-black", {
+        className={clsx("text-dark-100", {
           "text-opacity-50": "en",
         })}
         onClick={() =>
@@ -26,8 +27,9 @@ function ChangeLang() {
         {"EN"}
       </Link>
       <Link
+        aria-label="Switch to Arabic"
         href={`/ar/${asPath.split("/")[2] || ""}`}
-        className={clsx("text-black", {
+        className={clsx("text-dark-100", {
           "text-opacity-50": "ar",
         })}
         onClick={() =>

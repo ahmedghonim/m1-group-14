@@ -31,7 +31,7 @@ async function OurBlog({
         <Text
           as="p"
           font="semi"
-          className="!text-[18px] !text-black font-Inter"
+          className="!text-[18px] !text-dark-100 font-Inter"
         >
           {common.blog_sub}
         </Text>
@@ -52,7 +52,12 @@ async function OurBlog({
           ))}
         </div>
         <div className="rounded-3xl bg-[#F2E4BF] h-[282px] flex flex-col justify-center items-center gap-7 px-2">
-          <Text as="p" size="md" font="bold" className="text-black md:w-3/5 ">
+          <Text
+            as="p"
+            size="md"
+            font="bold"
+            className="text-dark-100 md:w-3/5 "
+          >
             {quiteData?.quite[lang]}
           </Text>
           <LinkButton lang={lang} href="/contact-us" rounded="full">

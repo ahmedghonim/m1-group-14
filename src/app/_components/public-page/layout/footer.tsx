@@ -104,6 +104,7 @@ const Contacts = async ({
               <div key={index} className="flex gap-4">
                 <Phone />
                 <Link
+                  aria-label="phone"
                   href={"tell:" + phone}
                   className="font-Lato text-dark-100 text-center gap-3 font-semibold "
                 >
@@ -121,6 +122,7 @@ const Contacts = async ({
               <div key={index} className="flex gap-4">
                 <Mail />
                 <Link
+                  aria-label="email"
                   href={`mailto:${email}`}
                   className="font-Lato text-dark-100 text-center gap-3 font-semibold "
                 >
@@ -138,6 +140,8 @@ const Contacts = async ({
               <Location className="group-hover:fill-primary-100" />
             </span>
             <Link
+              target="_blank"
+              aria-label="address"
               href={link}
               dangerouslySetInnerHTML={{ __html: address }}
             ></Link>
@@ -169,6 +173,7 @@ const SocialIcons = async ({
 
       <div className="flex items-center gap-5">
         <Link
+          aria-label="facebook"
           href={data?.fb || "https://www.facebook.com/MRizkEgy1"}
           className="duration-300 hover:scale-125"
           target="_blank"
@@ -176,6 +181,7 @@ const SocialIcons = async ({
           <Facebook />
         </Link>
         <Link
+          aria-label="instagram"
           href={data?.insta || "https://www.instagram.com/mohamed.rezkbdah/"}
           className="duration-300 hover:scale-125"
           target="_blank"
@@ -183,6 +189,7 @@ const SocialIcons = async ({
           <Instagram />
         </Link>
         <Link
+          aria-label="linkedin"
           href={
             data?.linked ||
             "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
@@ -193,6 +200,7 @@ const SocialIcons = async ({
           <Linkedin />
         </Link>
         <Link
+          aria-label="twitter"
           href={data?.tw || "https://twitter.com/M1_GROUP"}
           target="_blank"
           className="duration-300 hover:scale-125"
@@ -200,6 +208,7 @@ const SocialIcons = async ({
           <Twitter />
         </Link>
         <Link
+          aria-label="snap"
           href={
             data?.snap || "http://linkedin.com/in/mohamed-rezk-group-7a4876269"
           }

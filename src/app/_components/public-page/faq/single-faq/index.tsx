@@ -28,7 +28,7 @@ export const SingleQuestion = ({ question, answer }: SingleQuestionProps) => {
       <div className="collapse-title relative flex items-center">
         <Text
           font="mid"
-          className="font-Inter text-black !text-[16px] md:!text-[24px]"
+          className="font-Inter text-dark-100 !text-[16px] md:!text-[24px]"
         >
           {question}
         </Text>
